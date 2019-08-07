@@ -7,6 +7,8 @@ Projeto de valorização de skins de jogos em geral
  ## o	Guilherme Oliveira de Souza Leão – SP3013243
  ## o	Luis Antonio Gonçalves Novaes Angelim – SP301309X
  ##  o	Vitor Urdiali – SP3013111
+ ##
+ ## 
 ## •	O usuário deverá logar no site para usufruir de todas as funcionalidades a seguir.
 ## •	Conseguir depositar seus itens do jogo Counter Strike: Global Offensive de sua conta Steam no site.
  ## o	Com isso, os itens depositados no site não poderão ser usados pelo usuário dentro do jogo.
