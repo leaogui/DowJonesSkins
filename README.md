@@ -1,5 +1,6 @@
 # DowJonesSkins
-Projeto de valorização de skins de jogos em geral
+## Descrição do Projeto
+O projeto DownJonesSkins consiste uma aplicação Web de bolsa de valores de skins de CSGO com mais algumas funcionalidades. Nesta aplicação, o usuário se cadastra e vincula sua conta à Steam. Com a conta vinculada, o usuário deposita suas skins de Counter-Strike Global Offensive no site. Com isso, a skins passa a valorizar e desvalorizar, sendo do feeling do usuário vender ou não, sabendo dos riscos envolvidos. Vendendo a skin, o dinheiro é depositado na carteira do site, e posteriormente pode ser retirado para a carteira do usuário no PayPal.
 
 ## Participantes:
 * Andrey Camargo Lacerda – SP3013049 
