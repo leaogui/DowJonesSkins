@@ -20,6 +20,7 @@
     "bluebird": "^3.5.5",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
+    "jest": "^24.9.0",
     "openid": "^2.0.6",
     "request-promise": "^4.2.4",
     "steam-login": "^0.1.7"
