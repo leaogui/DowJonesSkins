@@ -8,12 +8,15 @@ const app = express()
 var path = require('path');
 app.use(express.static(path.join(__dirname, '..')))
 
+// Definindo porta de conexão
+const PORT = process.env.PORT || 7777
+
 // /importando e definindo conexão com a Steam
 var steam   = require('steam-login')
 app.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'a secret' }))
 app.use(steam.middleware({
-	realm: 'http://localhost:7777/', 
-	verify: 'http://localhost:7777/verify',
+	realm: 'http://localhost:'+PORT+'/', 
+	verify: 'http://localhost:'+PORT+'/'+'verify',
 	apiKey: 'F946785AC15BCE7B5930E5F82AE311CC'}
 ))
 
@@ -36,7 +39,7 @@ app.get('/logout', steam.enforceLogin('/'), function(req, res) {
     res.redirect('/');
 });
 
-// startando aplicação no gateway 7777
-app.listen('7777', () =>{
+// startando aplicação no gateway do Heroku
+app.listen(PORT, () =>{
     console.log("Rodando")
 })

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,8 @@
     "openid": "^2.0.6",
     "request-promise": "^4.2.4",
     "steam-login": "^0.1.7"
+  },
+  "devDependencies": {
+    "cucumber": "^5.1.0"
   }
 }
