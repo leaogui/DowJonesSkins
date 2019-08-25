@@ -42,6 +42,10 @@ app.get('/', (req, res) =>{
     res.sendFile(path.join(__dirname,'/HTML/index.html'))
 })
 
+app.get('/index.html', (req, res) =>{
+    res.sendFile(path.join(__dirname,'/HTML/index.html'))
+})
+
 // rotas da conexão à Steam
 app.get('/login',steam.authenticate(), (req, res) =>{
     res.redirect('/');
