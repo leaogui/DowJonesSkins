@@ -12,20 +12,30 @@ app.use(express.static(__dirname))
 const PORT = process.env.PORT || 7777
 
 // Trocando API Key da Steam de acordo com a PORT 
-if (PORT == '7777'){
+if (PORT == '7777'){ // Key da porta 7777
     key = 'F946785AC15BCE7B5930E5F82AE311CC'
-} else {
+} else { // Key do Heroku
     key = '089C83E667EAEA556A647FCAE86101ED'
 }
 
 // /importando e definindo conexão com a Steam
 var steam   = require('steam-login')
-app.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'a secret' }))
-app.use(steam.middleware({
-	realm: 'http://localhost:'+PORT+'/', 
-	verify: 'http://localhost:'+PORT+'/'+'verify',
-	apiKey: key}
-))
+
+if (PORT == '7777'){
+        app.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'a secret' }))
+        app.use(steam.middleware({
+        realm: 'http://localhost:'+PORT+'/', 
+        verify: 'http://localhost:'+PORT+'/'+'verify',
+        apiKey: key}
+    ))
+} else {
+        app.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'a secret' }))
+        app.use(steam.middleware({
+        realm: 'https://dow-jones-skins.herokuapp.com/', 
+        verify: 'https://dow-jones-skins.herokuapp.com/verify',
+        apiKey: key}
+    ))
+}
 
 // definindo rotas
 app.get('/', (req, res) =>{
