@@ -6,7 +6,7 @@ const app = express()
 
 // definindo path dos arquivos
 var path = require('path');
-app.use(express.static(path.join(__dirname, '..')))
+app.use(express.static(__dirname))
 
 // Definindo porta de conexão, podendo ser ou do Heroku ou a 7777
 const PORT = process.env.PORT || 7777
@@ -22,7 +22,7 @@ app.use(steam.middleware({
 
 // definindo rotas
 app.get('/', (req, res) =>{
-    res.sendFile(path.join(__dirname, '../HTML/index.html'))
+    res.sendFile(path.join(__dirname,'/HTML/index.html'))
 })
 
 // rotas da conexão à Steam
