@@ -8,7 +8,7 @@ const app = express()
 var path = require('path');
 app.use(express.static(path.join(__dirname, '..')))
 
-// Definindo porta de conexão
+// Definindo porta de conexão, podendo ser ou do Heroku ou a 7777
 const PORT = process.env.PORT || 7777
 
 // /importando e definindo conexão com a Steam
