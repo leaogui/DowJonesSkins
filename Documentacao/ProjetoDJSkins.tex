@@ -1,0 +1,95 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage[top=3cm, left=3cm, right=2cm, bottom=2cm]{geometry}
+\usepackage{graphicx}
+\title{Projeto DowJones Skins}
+\author{Andrey Camargo Lacerda, Fabrício Ernesto dos Santos, Guilherme Oliveira de Souza Leão, Luis Antonio Gonçalves Novaes Angelim, Vitor Urdiali}
+
+\begin{document}
+    \setlength{\parindent}{1.25cm}
+
+    \section{1$^{\circ}$ Sprint}
+    O primeiro sprint consistiu na preparação do repositório do projeto, com a instalação dos seguintes
+    FrameWorks: Code Climate, Cucumber, Jest, Travis CI. Além da configuração dessas ferramentas,
+    foi desenvolvido o primeiro esboço do projeto do projeto para inserção no Heroku e teste da configuração.
+    Neste esboço, foi criado a Home do site e o arquivo node.js principal. Para a parte de ES4A4,
+    foi criado o projeto no PivotalTracker, a fim de inserirmos as User Stories.
+
+    \subsection{Criação do Repositório no Git}
+    O primeiro passo tomado pela equipe foi a criação do repositório no Git. Para isso, o integrantes
+    Guilherme Leão criou o repositório no GitHub, e posteriormente adicionou todos os membros
+    da equipe e o professor de ES4A4, Daniel Morais.\\
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale=0.6]{Imagens/Repositorio.png}
+        \caption{Repositório do Projeto no GitHub}
+    \end{figure}
+
+    \subsection{Instalação dos Frameworks}
+    Dentro da pasta raíz do projeto, executamos o comando 'npm init' via CMD. Para isso, instalamos o Node.js
+    em nossas máquinas. Este comando criou três arquivos: node\_modules, que consiste no diretório onde todos
+    os módulos e bibliotecas utilizadas são salvas; package.json, que consiste em um 'arquivo de configuração',
+    possuindo informações sobre a execução do project; package-lock.json, que consiste em um arquivo que salva
+    informações de todas as biliotecas e dependencias instaladas no projeto.
+    
+    Com esses três arquivos criados, instalamos o Jest, a partir do comando 'npm install jest', e o Cucumber, a partir
+    do comando 'npm install cucumber'. Ambos os frameworks são utilizados para testes.
+
+    Após instalarmos os dois frameworks para o node.js, instalamos os dois frameworks para o próprio repositório do GitHub.
+    O primeiro foi o CodeClimate. Para isso, o dono do repositório instalou a extensão CodeClimate no navegador,
+    e posteriormente entrou no git do projeto. Dentro do GitHub do projeto, uma opção apareceu para adicionar
+    o projeto ao CodeClimate. Após clicar na opção, o repositório foi lido e adicionado ao CodeClimate, 
+    que agora é o plugin de avaliação de código do repositório.
+
+    Após isso, o dono do repositório instalou o Travis CI pelo próprio 'GitHub MarketPlace'. Este framework ainda será melhor explorado,
+    por enquanto apenas foi instalado.
+
+    \subsection{Criação e configuração do Heroku}
+    Para criarmos o app no Heroku, instalamos o Heroku CLI em nossas máquinas. Com ele instalado, executamos o comando
+    'heroku create'. Após criar o Heroku App, entramos no web do Heroku, fizemos o login e configuramos o deploy do Heroku
+    para que ele seja sincronizado com o 'push' para o repositório no GitHub.\\
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale=0.5]{Imagens/Heroku.png}
+        \caption{App do Projeto no Heroku}
+    \end{figure}
+
+    \subsection{Home.html + app.js}
+    Para criar o esboço da Home do projeto, utilizamos HTML, JS e CSS. Para estilização, utilizamos o Bulma,
+    que consiste num FrameWork de CSS. Separamos cada arquivo em pastas baseadas em suas extensões. 
+    Com isso, criamos uma pasta HTMl, uma CSS e uma JS. Na pasta CSS, jogamos o .min.css do Bulma, para que 
+    pudessemos utilizá-lo.
+
+    Com a Home criada, partimos para o primeiro contato com o login via Steam. Para isso, utilizamos a API
+    da Steam para Node.JS. No arquivos app.js, que consiste no arquivo 'main', criamos todas as rotas
+    e executamos o app via express. Neste arquivo, colocamos as rotas da API Steam, além de configurar
+    o middleware, informação a API Key e domínio. Como executaremos tanto em local como no Heroku, modularizamos
+    em vários arquivos JS com functions que realizam essa troca de domínio, porta e API Key, já que temos
+    uma key apra cada domínio (local e Heroku). 
+
+    Para esas funções foram criadas testes unitários utilizando o Jest. Esses testes estão na subpasta 'tests' 
+    dentro da pasta 'JS'.
+
+    Com tudo isso feito, finalizamos a parte de desenvolvimento.\\
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale=0.5]{Imagens/Home.png}
+        \caption{Esboço da Home pronto}
+    \end{figure}
+
+    \subsection{Engenharia de Software}
+    No PivotalTracker criado pelo professor Daniel, inserimos as primeiras User Stories. Essas Stories consistem 
+    nas principais funcionalidades de usuários que conseguimos identificar e dividir até então. Após inserirmos, 
+    Demos a pontuação para cada uma, a partir de um debate, onde o integrante que deu a menor nota defendia seu argumento 
+    junto ao integrante de deu a maior nota. O melhor argumento decide a nota.
+
+    Após isso, organizamos a prioridade e dependencias de cada User Story, além de jogarmos uma no IceBox, que 
+    consistia na funcionalidade de integrar o site com o PayPal. 
+    \begin{figure}[!htb]
+        \centering
+        \includegraphics[scale=0.5]{Imagens/Pivotal1.png}
+        \caption{PivotalTracker no 1$^{\circ}$ Sprint}
+    \end{figure}
+
+\end{document}
