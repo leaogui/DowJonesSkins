@@ -1,41 +1,23 @@
-// importando biblioteca 'express'
+// importando biblioteca 'express' e definindo sua função principal
 const express = require('express')
-
-// definindo função principal do express
 const app = express()
 
 // definindo path dos arquivos
-var path = require('path');
+let path = require('path');
 app.use(express.static(__dirname))
 
-// Definindo porta de conexão, podendo ser ou do Heroku ou a 7777
-const PORT = process.env.PORT || 7777
+// Definindo porta de conexão
+let switchPort = require('./JS/SwitchPort')
+const PORT = switchPort.getPort()
 
-// Trocando API Key da Steam de acordo com a PORT 
-if (PORT == '7777'){ // Key da porta 7777
-    key = 'F946785AC15BCE7B5930E5F82AE311CC'
-} else { // Key do Heroku
-    key = '089C83E667EAEA556A647FCAE86101ED'
-}
+// Selecionando Steam API Key
+let switchSteamKey = require('./JS/SwitchSteamKey')
+const key = switchSteamKey.getKey(PORT)
 
-// /importando e definindo conexão com a Steam
-var steam   = require('steam-login')
-
-if (PORT == '7777'){
-        app.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'a secret' }))
-        app.use(steam.middleware({
-        realm: 'http://localhost:'+PORT+'/', 
-        verify: 'http://localhost:'+PORT+'/'+'verify',
-        apiKey: key}
-    ))
-} else {
-        app.use(require('express-session')({ resave: false, saveUninitialized: false, secret: 'a secret' }))
-        app.use(steam.middleware({
-        realm: 'https://dow-jones-skins.herokuapp.com/', 
-        verify: 'https://dow-jones-skins.herokuapp.com/verify',
-        apiKey: key}
-    ))
-}
+// importando e definindo conexão com a Steam
+let steam   = require('steam-login')
+let switchSteamConnection = require('./JS/SwitchSteamConnection')
+switchSteamConnection.getConnection(app, steam, PORT)
 
 // definindo rotas
 app.get('/', (req, res) =>{
@@ -52,7 +34,8 @@ app.get('/login',steam.authenticate(), (req, res) =>{
 })
 
 app.get('/verify', steam.verify(), function(req, res) {
-    res.send(req.user).end();
+    //res.send(req.user).end();
+    res.redirect('/');
 });
  
 app.get('/logout', steam.enforceLogin('/'), function(req, res) {
@@ -60,7 +43,9 @@ app.get('/logout', steam.enforceLogin('/'), function(req, res) {
     res.redirect('/');
 });
 
-// startando aplicação no gateway do Heroku
+// startando aplicação no gateway selecionado
 app.listen(PORT, () =>{
     console.log("Rodando")
+    console.log ('Porta: ' + PORT)
+    console.log ('API Key: ' + key)
 })
