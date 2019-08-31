@@ -3,20 +3,20 @@ const express = require('express')
 const app = express()
 
 // definindo path dos arquivos
-let path = require('path');
+const path = require('path');
 app.use(express.static(__dirname))
 
 // Definindo porta de conexão
-let switchPort = require('./JS/SwitchPort')
+const switchPort = require('./JS/SwitchPort')
 const PORT = switchPort.getPort()
 
 // Selecionando Steam API Key
-let switchSteamKey = require('./JS/SwitchSteamKey')
+const switchSteamKey = require('./JS/SwitchSteamKey')
 const key = switchSteamKey.getKey(PORT)
 
 // importando e definindo conexão com a Steam
-let steam   = require('steam-login')
-let switchSteamConnection = require('./JS/SwitchSteamConnection')
+const steam   = require('steam-login')
+const switchSteamConnection = require('./JS/SwitchSteamConnection')
 switchSteamConnection.getConnection(app, steam, PORT)
 
 // definindo rotas
