@@ -1,40 +1,42 @@
+/* jshint esversion:6 */
 // importando biblioteca 'express' e definindo sua função principal
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
 // definindo path dos arquivos
 const path = require('path');
-app.use(express.static(__dirname))
+app.use(express.static(__dirname));
 
 // Definindo porta de conexão
-const switchPort = require('./JS/SwitchPort')
-const PORT = switchPort.getPort()
+const SwitchPort = require('./JS/Connections/SwitchPort');
+const PORT = SwitchPort.getPort();
 
 // Selecionando Steam API Key
-const switchSteamKey = require('./JS/SwitchSteamKey')
-const key = switchSteamKey.getKey(PORT)
+const SwitchSteamKey = require('./JS/Connections/SwitchSteamKey');
+const key = SwitchSteamKey.getKey(PORT);
 
 // importando e definindo conexão com a Steam
-const steam   = require('steam-login')
-const switchSteamConnection = require('./JS/SwitchSteamConnection')
-switchSteamConnection.getConnection(app, steam, PORT)
+const steam   = require('steam-login');
+const SwitchSteamConnection = require('./JS/Connections/SwitchSteamConnection');
+SwitchSteamConnection.getConnection(app, steam, PORT, key);
 
 // definindo rotas
 app.get('/', (req, res) =>{
-    res.sendFile(path.join(__dirname,'/HTML/index.html'))
-})
+    res.sendFile(path.join(__dirname,'/HTML/index.html'));
+});
 
 app.get('/index.html', (req, res) =>{
-    res.sendFile(path.join(__dirname,'/HTML/index.html'))
-})
+    res.sendFile(path.join(__dirname,'/HTML/index.html'));
+});
 
 // rotas da conexão à Steam
 app.get('/login',steam.authenticate(), (req, res) =>{
     res.redirect('/');
-})
+});
 
 app.get('/verify', steam.verify(), function(req, res) {
-    //res.send(req.user).end();
+    const json = req.user;
+    console.log(json);
     res.redirect('/');
 });
  
@@ -45,7 +47,7 @@ app.get('/logout', steam.enforceLogin('/'), function(req, res) {
 
 // startando aplicação no gateway selecionado
 app.listen(PORT, () =>{
-    console.log("Rodando")
-    console.log ('Porta: ' + PORT)
-    console.log ('API Key: ' + key)
-})
+    console.log("Rodando");
+    console.log ('Porta: ' + PORT);
+    console.log ('API Key: ' + key);
+});
