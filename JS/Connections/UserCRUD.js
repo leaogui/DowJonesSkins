@@ -4,8 +4,12 @@ class UserCRUD{
 
         let count = 0;
         client.query('SELECT steamId FROM Usuario WHERE steamId = \''+json.steamid+'\';', (err, res) => {
-            console.log(err);
-            console.log(res);
+            if (err == null){
+                count = res.rowCount;
+            } else{
+                console.log(err);
+            }
+            
         });
         if (count == 1){
             client.query('INSERT INTO Usuario VALUES(\''
@@ -15,8 +19,11 @@ class UserCRUD{
             +json.avatar.small+'\', \''
             +json.avatar.medium+'\', \''
             +json.avatar.large+'\');', (err, res) => {
-                console.log(err);
-                console.log(res);
+                if (err == null){
+                    console.log(res);
+                } else{
+                    console.log(err);
+                }
             });
         }
     }
