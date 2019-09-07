@@ -4,13 +4,13 @@ class UserCRUD{
 
         let count = 0;
         client.query('SELECT steamId FROM Usuario WHERE steamId = '+json.steamid+';', (err, res) => {
-            console.log(res);
+            console.log(err);
         });
-        if (count == 0){
+        if (count == 1){
             client.query('INSERT INTO Usuario VALUES('
             +json.steamid+', '
-            +username+', '
-            +profile+', '
+            +json.username+', '
+            +json.profile+', '
             +json.avatar.small+', '
             +json.avatar.medium+', '
             +json.avatar.large+');', (err, res) => {
