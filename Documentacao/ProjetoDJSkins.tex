@@ -101,4 +101,18 @@
     Como Dito anteriormente, para isso utilizamos a sintaxe do Cucumber, e separamos acada feature em um arquivo diferente, 
     e salvamos em uma pasta separada, chamada 'Features'. 
     Como sintaxe, declaramos cada User Storie como Feature, descrevemos ela, informamos o Background, e assim os Scenarios.
+
+    \subsection{Testando cadastro/login com Postgre do Heroku}
+    Para começar o sistema de cadastro/login, adicionamos o add-ons do PostGre ao Heroku via Heroku CLI. Para isso, 
+    usamos o comando 'npm install pg' para instalar o Postgres do projeto. Após isso, adicionamos o add-on do Postgre 
+    Heroku via CMD, com comando 'heroku addons:create heroku-postgresql:hobby-dev'. Após isso, seguimos os passos 
+    que estão na documentação do Heroku Postgre, encontrada em 'https://devcenter.heroku.com/articles/heroku-postgresql'.
+
+    Após isso, criamos as tabelas via CMD, usando comando 'heroku psql' e adicionando todas as linhas de comando sql.
+    Tendo a conexão estável e as tabelas criadas, criamos uma classe chamada 'UserCRUD', e nela utilizamos o json 
+    enviado pela Steam após conexão para salvar um Usuário no banco de dados.
+
+    Nessa classe, a função signUp() recebe o json da Steam, conecta ao banco de dados e verifica se este usuário 
+    já foi cadastro. Se sim, mais nada é feito, mas caso contrário, o usuário é inserido no banco de dados.
+    Tendo isso feito, finalizamos a primeira parte do sistema de cadastro/login.
 \end{document}
