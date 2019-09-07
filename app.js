@@ -20,6 +20,17 @@ const steam   = require('steam-login');
 const SwitchSteamConnection = require('./JS/Connections/SwitchSteamConnection');
 SwitchSteamConnection.getConnection(app, steam, PORT, key);
 
+// Conectando ao banco de dados do Heroku
+const { Client } = require('pg');
+
+const client = new Client({
+    connectionString: process.env.'postgres://pdofwwavezdugl:1339427db3bf57549fab5e03d907f45fcb88d33ea809c7cb5f19df13cad55941@ec2-107-22-160-185.compute-1.amazonaws.com:5432/dmo20daf3h6kg
+    ',
+    ssl: true,
+});
+
+client.connect();
+
 // definindo rotas
 app.get('/', (req, res) =>{
     res.sendFile(path.join(__dirname,'/HTML/index.html'));
@@ -37,6 +48,8 @@ app.get('/login',steam.authenticate(), (req, res) =>{
 app.get('/verify', steam.verify(), function(req, res) {
     const json = req.user;
     console.log(json);
+    const UserCRUD = require('./JS/Connections/UserCRUD');
+    UserCRUD.signUp(json);
     res.redirect('/');
 });
  
