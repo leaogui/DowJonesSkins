@@ -5,6 +5,7 @@ class UserCRUD{
         let count = 1;
         client.query('SELECT steamId FROM Usuario WHERE steamId = \''+json.steamid+'\';', (err, res) => {
             if (err == null){
+                console.log(res);
                 count = res.rowCount;
             } else{
                 console.log(err);
