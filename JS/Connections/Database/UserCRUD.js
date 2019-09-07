@@ -1,3 +1,4 @@
+/* jshint esversion:6 */
 //Classe responsável pelas operações CRUD de um usuário
 class UserCRUD{
     static signUp(client, json){
@@ -13,13 +14,7 @@ class UserCRUD{
             
         });
         if (count == 0){
-            client.query('INSERT INTO Usuario VALUES(\''
-            +json.steamid+'\', \''
-            +json.username+'\', \''
-            +json.profile+'\', \''
-            +json.avatar.small+'\', \''
-            +json.avatar.medium+'\', \''
-            +json.avatar.large+'\');', (err, res) => {
+            client.query('INSERT INTO Usuario VALUES(\''+json.steamid+'\', \''+json.username+'\', \''+json.profile+'\', \''+json.avatar.small+'\', \''+json.avatar.medium+'\', \''+json.avatar.large+'\');', (err, res) => {
                 if (err == null){
                     console.log(res);
                 } else{

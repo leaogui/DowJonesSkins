@@ -1,5 +1,5 @@
 /* jshint esversion:6 */
-const SwitchSteamKey = require('../Connections/SwitchSteamKey');
+const SwitchSteamKey = require('../Connections/Steam/SwitchSteamKey');
 
 test('função deve retornar a chave "F946785AC15BCE7B5930E5F82AE311CC" se estiver em server local', () => {
     let testPORT = 7777;

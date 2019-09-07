@@ -8,16 +8,16 @@ const path = require('path');
 app.use(express.static(__dirname));
 
 // Definindo porta de conexão
-const SwitchPort = require('./JS/Connections/SwitchPort');
+const SwitchPort = require('./JS/Connections/Steam/SwitchPort');
 const PORT = SwitchPort.getPort();
 
 // Selecionando Steam API Key
-const SwitchSteamKey = require('./JS/Connections/SwitchSteamKey');
+const SwitchSteamKey = require('./JS/Connections/Steam/SwitchSteamKey');
 const key = SwitchSteamKey.getKey(PORT);
 
 // importando e definindo conexão com a Steam
 const steam   = require('steam-login');
-const SwitchSteamConnection = require('./JS/Connections/SwitchSteamConnection');
+const SwitchSteamConnection = require('./JS/Connections/Steam/SwitchSteamConnection');
 SwitchSteamConnection.getConnection(app, steam, PORT, key);
 
 // Conectando ao banco de dados do Heroku
@@ -47,7 +47,7 @@ app.get('/login',steam.authenticate(), (req, res) =>{
 app.get('/verify', steam.verify(), function(req, res) {
     const json = req.user;
     console.log(json);
-    const UserCRUD = require('./JS/Connections/UserCRUD');
+    const UserCRUD = require('./JS/Connections/Database/UserCRUD');
     UserCRUD.signUp(client, json);
     res.redirect('/');
 });
