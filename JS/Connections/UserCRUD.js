@@ -10,7 +10,7 @@ class UserCRUD{
                 console.log(JSON.stringify(row));
                 count += 1;
             }
-            client.end();
+
         });
         if (count == 0){
             client.query('INSERT INTO Usuario VALUES('
@@ -24,7 +24,6 @@ class UserCRUD{
                 for (let row of res.rows) {
                 console.log(JSON.stringify(row));
                 }
-                client.end();
             });
         }
     }

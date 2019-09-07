@@ -24,8 +24,7 @@ SwitchSteamConnection.getConnection(app, steam, PORT, key);
 const { Client } = require('pg');
 
 const client = new Client({
-    connectionString: process.env.'postgres://pdofwwavezdugl:1339427db3bf57549fab5e03d907f45fcb88d33ea809c7cb5f19df13cad55941@ec2-107-22-160-185.compute-1.amazonaws.com:5432/dmo20daf3h6kg
-    ',
+    connectionString: DATABASE_URL,
     ssl: true,
 });
 
@@ -55,6 +54,7 @@ app.get('/verify', steam.verify(), function(req, res) {
  
 app.get('/logout', steam.enforceLogin('/'), function(req, res) {
     req.logout();
+    client.end();
     res.redirect('/');
 });
 
