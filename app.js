@@ -24,7 +24,7 @@ SwitchSteamConnection.getConnection(app, steam, PORT, key);
 const { Client } = require('pg');
 
 const client = new Client({
-    connectionString: DATABASE_URL,
+    connectionString: 'postgres://pdofwwavezdugl:1339427db3bf57549fab5e03d907f45fcb88d33ea809c7cb5f19df13cad55941@ec2-107-22-160-185.compute-1.amazonaws.com:5432/dmo20daf3h6kg',
     ssl: true,
 });
 
