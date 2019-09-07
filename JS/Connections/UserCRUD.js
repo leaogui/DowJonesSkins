@@ -1,6 +1,6 @@
 //Classe responsável pelas operações CRUD de um usuário
 class UserCRUD{
-    static signUp(json){
+    static signUp(client, json){
 
         let count = 0;
         client.query('SELECT steamId FROM Usuario WHERE steamId = '+json.steamid+';', (err, res) => {

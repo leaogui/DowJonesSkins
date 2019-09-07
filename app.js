@@ -48,7 +48,7 @@ app.get('/verify', steam.verify(), function(req, res) {
     const json = req.user;
     console.log(json);
     const UserCRUD = require('./JS/Connections/UserCRUD');
-    UserCRUD.signUp(json);
+    UserCRUD.signUp(client, json);
     res.redirect('/');
 });
  
