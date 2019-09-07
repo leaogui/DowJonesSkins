@@ -4,7 +4,7 @@ class UserCRUD{
 
         let count = 0;
         client.query('SELECT steamId FROM Usuario WHERE steamId = '+json.steamid+';', (err, res) => {
-            count = res.rows.count.length;
+            count = res.row.length;
         });
         if (count == 0){
             client.query('INSERT INTO Usuario VALUES('
