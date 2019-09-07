@@ -11,7 +11,7 @@ class UserCRUD{
             }
             
         });
-        if (count == 1){
+        if (count == 0){
             client.query('INSERT INTO Usuario VALUES(\''
             +json.steamid+'\', \''
             +json.username+'\', \''
