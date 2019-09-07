@@ -2,7 +2,7 @@
 class UserCRUD{
     static signUp(client, json){
 
-        let count = 0;
+        let count = 1;
         client.query('SELECT steamId FROM Usuario WHERE steamId = \''+json.steamid+'\';', (err, res) => {
             if (err == null){
                 count = res.rowCount;
