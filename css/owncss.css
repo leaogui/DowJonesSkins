@@ -2,12 +2,12 @@
 
 @font-face {
     font-family: 'Roboto';
-    src: url('../HTML/fonts/RobotoMono-Light.ttf');
+    src: url('../css/fonts/RobotoMono-Light.ttf');
 }
 
 @font-face {
     font-family: 'Gibson';
-    src: url('../HTML/fonts/Gibson-Regular.ttf');
+    src: url('../css/fonts/Gibson-Regular.ttf');
 }
 
 div#texto h2{
