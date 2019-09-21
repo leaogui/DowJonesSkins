@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../HTML/fonts/RobotoMono-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Gibson';
+    src: url('../HTML/fonts/Gibson-Regular.ttf');
+}
+
+div#texto h2{
+    padding-top: -30px;
+    padding-bottom: 30px;
+    font-family: 'Gibson';
+    text-align: center;
+    font-size: 50px;
+
+}
+
+img#imgtroca{
+
+
+    box-shadow: 3px 3px 3px rgb(71, 69, 69);
+    border-radius: 5px;
+}
+
+
+div#grid{
+
+
+    display: grid;
+    grid-template-columns: 500px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    max-width: 1000px;
+    margin: 0 auto;
+
+
+}
+
+div#itemgrid{
+
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    border: 3px solid #ff3860;
+    border-radius: 5px;
+
+}
+
+div#fotouser{
+
+    display:block;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+    text-align: center;
+    padding-bottom: 20px;
+
+}
+div#fotouser img{
+
+    display:block;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 20%;
+
+}
+
+div#fotouser h1{
+
+    font-family: 'Gibson';
+    font-size: 35px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+  
+}
+
+div#fotouser h2{
+
+    font-family: 'Roboto';
+    font-size: 20px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+  
+}
+
+
+
+h3#ofertas{
+
+    font-family: 'Gibson';
+    font-size: 25px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    background-color: rgb(228, 226, 226);
+    margin-left: 45%;
+    margin-right: 45%;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+
+
+}
+
+
