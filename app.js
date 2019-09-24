@@ -3,6 +3,10 @@
 const express = require('express');
 const app = express();
 
+// importando bibliotecas para criação de sessão
+const session = require('express-session');
+const flash = require('connect-flash');
+
 // definindo path dos arquivos
 const path = require('path');
 app.use(express.static(__dirname));
@@ -30,6 +34,19 @@ const client = new Client({
 
 client.connect();
 
+// Configurando sessões
+app.use(session({
+    secret: '777skrr',
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(flash());
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash("success_msg");
+    res.locals.erro_msg = req.flash("erro_msg");
+    next();
+});
+
 // definindo rotas
 app.get('/', (req, res) =>{
     res.sendFile(path.join(__dirname,'/HTML/index.html'));
@@ -37,6 +54,18 @@ app.get('/', (req, res) =>{
 
 app.get('/index.html', (req, res) =>{
     res.sendFile(path.join(__dirname,'/HTML/index.html'));
+});
+
+app.get('/fairtrade.html', (req, res) =>{
+    res.sendFile(path.join(__dirname,'/HTML/fairtrade.html'));
+});
+
+app.get('/perfil.html', (req, res) =>{
+    res.sendFile(path.join(__dirname,'/HTML/perfil.html'));
+});
+
+app.get('/listaskins.html', (req, res) =>{
+    res.sendFile(path.join(__dirname,'/HTML/listaskins.html'));
 });
 
 // rotas da conexão à Steam
