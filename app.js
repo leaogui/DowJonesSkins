@@ -5,7 +5,6 @@ const app = express();
 
 // importando bibliotecas para criação de sessão
 const session = require('express-session');
-const flash = require('connect-flash');
 
 // definindo path dos arquivos
 const path = require('path');
@@ -37,15 +36,9 @@ client.connect();
 // Configurando sessões
 app.use(session({
     secret: '777skrr',
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: false
 }));
-app.use(flash());
-app.use((req, res, next) => {
-    res.locals.success_msg = req.flash("success_msg");
-    res.locals.erro_msg = req.flash("erro_msg");
-    next();
-});
 
 // definindo rotas
 app.get('/', (req, res) =>{
@@ -61,7 +54,11 @@ app.get('/fairtrade.html', (req, res) =>{
 });
 
 app.get('/perfil.html', (req, res) =>{
-    res.sendFile(path.join(__dirname,'/HTML/perfil.html'));
+    if (!req.session.user){
+        res.redirect('/login');
+    } else{
+        res.sendFile(path.join(__dirname,'/HTML/perfil.html'));
+    }
 });
 
 app.get('/listaskins.html', (req, res) =>{
@@ -78,6 +75,7 @@ app.get('/verify', steam.verify(), function(req, res) {
     console.log(json);
     const UserCRUD = require('./JS/Connections/Database/UserCRUD');
     UserCRUD.signUp(client, json);
+    req.session.user = json;
     res.redirect('/');
 });
  
