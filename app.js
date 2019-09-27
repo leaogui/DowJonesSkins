@@ -50,7 +50,11 @@ app.get('/index.html', (req, res) =>{
 });
 
 app.get('/fairtrade.html', (req, res) =>{
-    res.sendFile(path.join(__dirname,'/HTML/fairtrade.html'));
+    if (!req.session.user){
+        res.redirect('/login');
+    } else{
+        res.sendFile(path.join(__dirname,'/HTML/fairtrade.html'));
+    }
 });
 
 app.get('/perfil.html', (req, res) =>{
@@ -62,7 +66,11 @@ app.get('/perfil.html', (req, res) =>{
 });
 
 app.get('/listaskins.html', (req, res) =>{
-    res.sendFile(path.join(__dirname,'/HTML/listaskins.html'));
+    if (!req.session.user){
+        res.redirect('/login');
+    } else{
+        res.sendFile(path.join(__dirname,'/HTML/listaskins.html'));
+    }
 });
 
 // rotas da conexão à Steam
@@ -80,9 +88,14 @@ app.get('/verify', steam.verify(), function(req, res) {
 });
  
 app.get('/logout', steam.enforceLogin('/'), function(req, res) {
-    req.logout();
-    client.end();
-    res.redirect('/');
+    if (!req.session.user){
+        res.redirect('/');
+    } else{
+        req.logout();
+        client.end();
+        req.session.destroy();
+        res.redirect('/');
+    }
 });
 
 // startando aplicação no gateway selecionado
