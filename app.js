@@ -30,8 +30,25 @@ const client = new Client({
     connectionString: 'postgres://pdofwwavezdugl:1339427db3bf57549fab5e03d907f45fcb88d33ea809c7cb5f19df13cad55941@ec2-107-22-160-185.compute-1.amazonaws.com:5432/dmo20daf3h6kg',
     ssl: true,
 });
-
 client.connect();
+
+// Configurando steam-inventory-api
+const InventoryApi = require('steam-inventory-api');
+const inventoryApi = Object.create(InventoryApi);
+
+inventoryApi.init({
+    id: 'invSteam',
+    proxyRepeat: 1,
+    maxUse: 25,
+    requestInterval: 60 
+});
+
+const contextid = 2;
+const appid = 730;
+const count = 5000
+const start_assetid = 730;
+const language = 'pt-BR';
+const tradable = true;
 
 // Configurando sessões
 app.use(session({
@@ -47,6 +64,10 @@ app.get('/', (req, res) =>{
 
 app.get('/index.html', (req, res) =>{
     res.sendFile(path.join(__dirname,'/HTML/index.html'));
+});
+
+app.get('/daytrade.html', (req, res) => {
+    res.sendFile(path.join(__dirname,'/HTML/daytrade.html'));
 });
 
 app.get('/fairtrade.html', (req, res) =>{
@@ -81,6 +102,21 @@ app.get('/login',steam.authenticate(), (req, res) =>{
 app.get('/verify', steam.verify(), function(req, res) {
     const json = req.user;
     console.log(json);
+    const steamid = json.steamid;
+
+    inventoryApi.get({
+        appid,
+        contextid,
+        steamid,
+        start_assetid,
+        count,
+        language,
+        tradable
+    }).then((res) => {
+        console.log('Total itens: ',res.total);
+        console.log('Itens: ', JSON.stringify(res.items.map (item => item.market_hash_name),null, 4));
+    });
+
     const UserCRUD = require('./JS/Connections/Database/UserCRUD');
     UserCRUD.signUp(client, json);
     req.session.user = json;

@@ -115,4 +115,35 @@
     Nessa classe, a função signUp() recebe o json da Steam, conecta ao banco de dados e verifica se este usuário 
     já foi cadastro. Se sim, mais nada é feito, mas caso contrário, o usuário é inserido no banco de dados.
     Tendo isso feito, finalizamos a primeira parte do sistema de cadastro/login.
+
+    \subsection{Estabelecendo Sessão}
+    A fim de estabelecer o sistema de login, decidimos utilizar sessão para bloquear o acesso de usuário a 
+    determinadas páginas do site. Para isso, utilizamos a constante Session da biblioteca 'Express', que está 
+    sendo utlizada para instanciar um Servidor Web.
+
+    Utilizamos o comando app.use() para usar o Session. Neste etapa, inserimos um id para a sessão dentro do 
+    parâmetro de inicialização 'secret', e colocamos false nos outros dois itens de inicialização, saveUninitialized e resave, que, 
+    após pesquisar, percebemos que não faria sentido algum.
+
+    Após isso, colocamos dentro da página '/verify' a criação da sessão de acordo com o login do usuário na Steam. 
+    Com o usuário autenticado via Steam, utilizamos o comando 'req.session.user' e atribuimos o JSON fornecido pela Steam 
+    à essa constante.
+
+    Com isso, criamos nossa sessão para cada usuário logado, e após isso, para bloquear o acesso à páginas sem que o user 
+    esteja logado, inserimos um 'IF' em cada get do servidor (ignorando a /index e a /login). Dentro do IF, 
+    inserimos '!req.session.user', mostrando que caso não exista ression, o usuário deverá ser redirecionado para a 
+    tela de login da Steam, finalizando assim o ideal de sessão do site. 
+
+    \subsection{Visualizando o inventário Steam do usário}
+    Para obter acesso ao inventário Steam do usário logado, utilizamos da biblioteca 'steam-inventory-api'. 
+    Inicializamos o serviço da API quando o servidor sobe. Após isso, quando o usuário se loga na Steam, ele é redirecionado para o '/verify' onde, 
+    além de instanciarmos a sessão descrita anteriormente, passamos a visualizar os itens de seu inventário.
+    
+    Para isso, pegamos a steamId do usuário de dentro do JSON fornecido pela Steam e inserimos como um dos diversos parâmetros da API de 
+    inventário. Utilizamos constantes para facilitar o preenchimentos dos outros parâmetros de inicialização, seguindo como base o 
+    exemplo de uso da API fornecido em 'https://www.npmjs.com/package/steam-inventory-api'.
+
+    Com isso, ao logar no Steam, o sistema consegue capturar todos os itens trocáveis do inventário do usário, 
+    além de filtrar para o jogo 'CSGO'.
+
 \end{document}

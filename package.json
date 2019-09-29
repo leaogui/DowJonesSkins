@@ -31,6 +31,7 @@
     "pg": "^7.12.1",
     "request-promise": "^4.2.4",
     "sequelize": "^5.18.2",
+    "steam-inventory-api": "^2.0.10",
     "steam-login": "^0.1.7"
   },
   "devDependencies": {
