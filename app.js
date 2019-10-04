@@ -119,9 +119,7 @@ app.get('/verify', steam.verify(), function(req, res) {
 
     const UserCRUD = require('./JS/Connections/Database/UserCRUD');
     UserCRUD.signUp(client, json);
-    setUserInfos = require('./JS/scripts/setUserInfos.js');
     req.session.user = json;
-    setUserInfos(json, req.session.user);
     res.redirect('/');
 });
  
