@@ -51,11 +51,24 @@ const language = 'pt-BR';
 const tradable = true;
 
 // Configurando sessões
+const SESS_LIFETIME = 1000 * 60 * 60 * 2;
+const SESS_NAME = 'steamUser'
 app.use(session({
-    secret: '777skrr',
+    name: SESS_NAME,
+    secret: 'djw',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: false,
+        maxAge: SESS_LIFETIME,
+        sameSite: true,
+        secure: true
+    }
 }));
+app.use(function (req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
 
 // definindo rotas
 app.get('/', (req, res) =>{
@@ -120,6 +133,8 @@ app.get('/verify', steam.verify(), function(req, res) {
     const UserCRUD = require('./JS/Connections/Database/UserCRUD');
     UserCRUD.signUp(client, json);
     req.session.user = json;
+    res.cookie('userName', json.username);
+    res.cookie('avatar', json.avatar.large);
     res.redirect('/');
 });
  
@@ -129,6 +144,7 @@ app.get('/logout', steam.enforceLogin('/'), function(req, res) {
     } else{
         req.logout();
         client.end();
+        res.clearCookie(SESS_NAME);
         req.session.destroy();
         res.redirect('/');
     }
