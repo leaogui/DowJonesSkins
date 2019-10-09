@@ -1,7 +1,5 @@
-function userInfos(){
+function userIndex(){
   let avatar = document.getElementById('avatar').src = getCookie('avatar');
-  let avatarIcon = document.getElementById('avatarIcon').src = getCookie('avatar');
-  let userName = document.getElementById('userName').innerHTML  = getCookie('userName');
 };
 
 function getCookie(cname) {
@@ -20,4 +18,4 @@ function getCookie(cname) {
     return "";
 };
 
-userInfos();
+userIndex();

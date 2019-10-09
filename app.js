@@ -72,11 +72,19 @@ app.use(function (req, res, next) {
 
 // definindo rotas
 app.get('/', (req, res) =>{
-    res.sendFile(path.join(__dirname,'/HTML/index.html'));
+    if (!req.session.user){
+        res.sendFile(path.join(__dirname,'/HTML/index.html'));
+    } else{
+        res.sendFile(path.join(__dirname,'/HTML/index-logged.html'));
+    }
 });
 
 app.get('/index.html', (req, res) =>{
-    res.sendFile(path.join(__dirname,'/HTML/index.html'));
+    if (!req.session.user){
+        res.sendFile(path.join(__dirname,'/HTML/index.html'));
+    } else{
+        res.sendFile(path.join(__dirname,'/HTML/index-logged.html'));
+    }
 });
 
 app.get('/daytrade.html', (req, res) => {
@@ -143,7 +151,6 @@ app.get('/logout', steam.enforceLogin('/'), function(req, res) {
         res.redirect('/');
     } else{
         req.logout();
-        client.end();
         res.clearCookie(SESS_NAME);
         req.session.destroy();
         res.redirect('/');
