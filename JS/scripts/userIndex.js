@@ -1,4 +1,4 @@
-var cookieGetter = require('getCookie.js');
+var cookieGetter = require('getCookie');
 
 function userIndex(){
   let json = JSON.parse(cookieGetter.getCookie('steamjson'));
