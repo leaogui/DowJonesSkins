@@ -1,23 +1,10 @@
-function userInfos(){
-  let avatar = document.getElementById('avatar').src = getCookie('avatar');
-  let avatarIcon = document.getElementById('avatarIcon').src = getCookie('avatar');
-  let userName = document.getElementById('userName').innerHTML  = getCookie('userName');
-};
+var getCookie = require('getCookie.js');
 
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
+function userInfos(){
+  let json = JSON.parse(getCookie('steamjson'));
+  let avatar = document.getElementById('avatar').src = json.avatar.large;
+  let avatarIcon = document.getElementById('avatarIcon').src = json.avatar.large;
+  let userName = document.getElementById('userName').innerHTML  = json.username;
 };
 
 userInfos();

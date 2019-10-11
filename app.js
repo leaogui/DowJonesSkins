@@ -141,8 +141,7 @@ app.get('/verify', steam.verify(), function(req, res) {
     const UserCRUD = require('./JS/Connections/Database/UserCRUD');
     UserCRUD.signUp(client, json);
     req.session.user = json;
-    res.cookie('userName', json.username);
-    res.cookie('avatar', json.avatar.large);
+    res.cookie('steamjson', JSON.stringify(json));
     res.redirect('/');
 });
  
