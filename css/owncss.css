@@ -111,3 +111,28 @@ div#idvertical{
     padding-top: 20px;
 }
 
+div#corcoluna1 {
+    background-color: #361a34;
+}
+
+div#corcoluna2 {
+    background-color: #442141;
+}
+
+div#corcoluna3 {
+    background-color: #552951;
+}
+
+div#corcoluna4 {
+    background-color: #6a3365;
+}
+
+div#corcoluna5 {
+    background-color: #85407e;
+}
+
+div#corfontecoluna{
+
+    color:white;
+
+}
