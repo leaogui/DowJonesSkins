@@ -1,4 +1,4 @@
-function getCookie(cname) {
+export function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -13,5 +13,3 @@ function getCookie(cname) {
     }
     return "";
 };
-
-module.exports.getCookie = getCookie;
