@@ -93,7 +93,11 @@ app.get('/index', (req, res) =>{
 });
 
 app.get('/daytrade', (req, res) => {
-    res.render('daytrade');
+    if (!req.session.user){
+        res.render('daytrade');
+    } else{
+        res.render('daytrade-logged');
+    }
 });
 
 app.get('/fairtrade', (req, res) =>{
