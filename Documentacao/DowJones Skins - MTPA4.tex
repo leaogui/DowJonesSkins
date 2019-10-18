@@ -4,8 +4,8 @@
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{indentfirst}
-
 \usepackage{graphicx}
+
 \title{Projeto DowJones Skins}
 \author{Andrey Camargo Lacerda, Fabrício Ernesto dos Santos, Guilherme Oliveira de Souza Leão, Luis Antonio Gonçalves Novaes Angelim, Vitor Urdiali}
 
@@ -36,7 +36,7 @@
         {\Large São Paulo - Brasil \\
         2019}
     \newpage %%
-    \begin{center}\Large \bf RESUMO \end{center}
+    \begin{center}\Large Resumo \end{center}
     \end{center}
     \thispagestyle{empty}
     \begin{flushleft}
@@ -46,7 +46,7 @@
     \end{flushleft}
 
     \newpage %%
-    \begin{center}\Large \bf ABSTRACT \end{center}
+    \begin{center}\Large Abstract \end{center}
     \thispagestyle{empty}
     \begin{flushleft}
     This research project aims to implement a web application that simulates a financial market for skins presented in the electronic game called 'Counter-Strike: Global Offensive', working as a stock exchange and allowing the use of the 'Day Trading' method. In this system, the user will login via Steam Account and deposit their skins in the site, allowing the investment of their skins, as well as the purchase of other investment skins. The development and planning of the project will be using the agile methods, applying an software engineering close to what resides in the XP methodology. For this, the Pivotal Tracker tool will be used for project administration, where all "User Stories" will be organized and discussed. In the technical part, the system will be implemented using 'HTML5' for front-end and 'Node.Js' for back-end. On back-end, the 'express' framework will be responsible for instantiating and administering the web server. For testing, the 'Jest' and 'Cucumber' frameworks will be used, while to deploy and control the version, Heroku and Github will be used, respectively. \\
@@ -55,46 +55,46 @@
     \end{flushleft}
 
     \newpage %%
-    \section{INTRODUÇÃO}
-    Atualmente, o mercado de jogos eletrônicos cresce cada vez mais, gerando e circulando uma grande quantia de capital. Dentro do mercado de jogos, existe um nicho que está se destacando e crescendo até mais do que a própria venda de jogos, que consiste no mercado de Skins, que são equipamentos ou customizações que podem ser compradas com dinheiro físico e utilizadas dentro do jogo especifico que as detêm.
+    \section{Introdução}
+    Atualmente, o mercado de jogos eletrônicos movimenta acima de 130 bilhões de dolares ao redor do planeta, como pode ser visto em pesquisas publicadas pela NewZoo, empresa especializada em coleta e estudo de dados do mercado de jogos digitais. Dentro do mercado de jogos, existe um nicho de destaque, que consiste no mercado de Skins, que são equipamentos ou customizações que podem ser compradas com dinheiro físico e utilizadas dentro do jogo especifico que as detêm.
     
-    Sendo um mercado completamente novo e inteiramente virtual, as aplicações criadas para este nicho exploraram poucas vertentes de mercado até então, sendo baseadas em simples sistemas de mercados de Skins, em que um vendedor oferece sua mercadoria para que algum comprador interessado faça negócio, ou sendo baseadas em jogos de azar.
+    Mesmo sendo um mercado forte, movimentando mais 10 bilhões de dólares por ano no jogo ‘Counter-Strike: Global Offensive’, como dito na máteria ‘Mercado de skins de CS:GO pode movimentar até 10 bilhões de dólares por ano’ do portal ‘The Enemy’, as aplicações criadas para este nicho exploraram poucas vertentes de mercado até então, sendo baseadas em simples sistemas de mercados de Skins, em que um vendedor oferece sua mercadoria para que algum comprador interessado faça negócio, ou sendo baseadas em jogos de azar.
     
-    Como este mercado gera muito capital, uma grande quantidade de aplicações, principalmente web, foram implementadas e estão no ar, o que saturou os softwares que seguem as vertentes citadas anteriormente. Com isso, como seria possível criar uma aplicação web para este mercado de skins de forma que tal sistema não caia em saturação?
+    Como este mercado gera muito capital, como dito anteriormente, uma grande quantidade de aplicações, principalmente web, foram implementadas e estão no ar, o que saturou os softwares que seguem as vertentes citadas anteriormente. Com isso, como seria possível criar uma aplicação web para este mercado de skins de forma que tal sistema não caia em saturação?
     
     Com objetivo de resolver este problema, este trabalho de pesquisa consistirá no desenvolvimento de um software web para troca/venda de skins de jogos eletrônicos, neste caso vendo em conta skins de ‘Counter-Strike: Global Offensive’, que terá como funcionamento um sistema de bolsa de valores e Day Trading, saindo do simples mercado já bem explorado.
 
-    \subsection{TEMA}
+    \subsection{Tema}
     O tema deste projeto de pesquisa consiste no desenvolvimento de aplicações web para troca/venda de skins de jogos eletrônicos.
-    
-    \subsection{PROBLEMA}
+
+    \subsection{Problema}
     A problemática do projeto de pesquisa reside na implementação de uma aplicação de venda de skins do jogo ‘Counter-Strike: Global Offensive’ que funcione como um sistema de bolsa de valores e Day Trading, simulando um mercado financeiro de skins, saindo da visão saturada de mercado comum, onde um vendedor simplesmente anuncia sua mercadoria, e um comprar a compra diretamente.
 
-    \section{OBJETIVOS}
+    \section{Objetivos}
     Em linhas gerais, o objetivo deste projeto é desenvolver uma solução inovadora no mercado de venda/troca de skins de CS:GO que implementará um sistema de bolsa de valores e Day Trading dessas skins, algo não visto no mercado até então.
 
-    \subsection{OBJETIVOS PRIMÁRIOS}
+    \subsection{Objetivos Primários}
     Os objetivos principais giram em torno de elaborar e desenvolver um novo sistema de venda/troca de skins de jogos eletrônicos, inovando este cenário atual. Para isso, será necessário conhecer as soluções existentes no mercado quando falamos em aplicações de venda/troca de skins de jogos e entender seu funcionamento como um todo, para que identificar os pontos fortes e fracos deste mercado atualmente.
-    
-    \subsection{OBJETIVOS SECUNDÁRIOS}
+
+    \subsection{Objetivos Secundários}
     Como objetivos secundários, o projeto visa promover estudo e capacitação sobre tecnologias e meios utilizados atualmente para a implementação de aplicações web, além de promover um melhor entendimento sobre os ideais de mercado financeiro de ações e o mecanismo de Day Trading.
-    
-    \section{JUSTIFICATIVA}
+
+    \section{Justificativa}
     As principais razões que se levam à execução deste projeto e, por consequência, ao desenvolvimento de aplicações web para troca/venda de skins de jogos eletrônicos são: 
 
     \begin{itemize}
-        \item Inovação do mercado, pois a implementação de um mercado de ações e um Day Trade de skins consiste em algo completamente novo para o cenário desenvolvido até então;
+        \item Inovação do mercado, pois a implementação de um mercado de ações e um Day Trade de skins de CSGO consiste em algo novo para o cenário desenvolvido até então, que permeia sites de mercado comum e aposta;
         \item Exploração de novas tecnologias que farão parte do desenvolvimento do sistema como Handlebars, por exemplo, possibilitando estudo prático para os membros do projeto;
-        \item Viabilidade comercial, pois se pode lucrar muito com taxas de trocas ou vendas, por exemplo, e ao desenvolver um software inovador, um novo fluxo de usuários tem grande possibilidade de aparecer.
+        \item Viabilidade comercial, pois se pode lucrar muito com taxas de trocas, como pode ser vista no artigo de pesquisa da NewZoo sobre o lucro do mercado de jogos em 2018, que passou de 130 bilhões de dólares ao redor do planeta, sendo que o mercado de skins de CSGO movimenta por ano mais de 10 bilhões de dólares, segundo a matéria da ‘The Enemy’.
       \end{itemize}
 
-    \section{HIPÓTESES}
+    \section{Hipóteses}
     No mercado em geral, principalmente no Brasil, não existem sites com a proposta da valorização de skins, muito menos aplicações inspiradas no mundo financeiro de bolsa de valores e Day Trading, então o desenvolvimento do sistema proposto neste documento preencherá esta lacuna fazendo possível um usuário além de fazer as suas trocas, ter uma experiência de bolsa de valores com seus itens do jogo. 
     
     Tendo em vista que grande parte dos jogadores utilizam suas skins também para uso comercial e conseguir dinheiro, foi levantada a hipótese de que o site de valorização tem grande possibilidade de obter popularidade e o agrado do público do jogo envolvido.
 
 
-    \section{METODOLOGIA DO PROJETO}
+    \section{Metodologia do Projeto}
     Buscando a implementação d aplicação web proposta, este projeto utilizará dos métodos ágeis, principalmente seguindo a figura da metodologia XP. Para auxiliar na execução destes métodos, a ferramenta Pivotal Tracker será utilizada para administrar as histórias de usuários e promover um ambiente para organizá-las e discuti-las.
     
     Como parte dos métodos ágeis, o sistema utilizará duas ferramentas de testes, o Jest e o Cucumber, realizando testes unitários, de integração e testes End-to-End, além do fato de que o Cucumber fará os testes direto nos cenários criados pelas histórias de usuário.
@@ -104,12 +104,29 @@
     Para estudo de domínio, informações com players ativos de Counter-Strike: Global Offensive serão coletadas, além de informações sobre sites de grande importância no meio de mercado de skins. Como não é uma área documentada, será necessário fazer uma abordagem mais informal e retirar informações direto de clientes e de experiencias próprias dos integrantes deste trabalho.
     
     Pesquisas com alguns jogadores para verificar a viabilidade desta aplicação proposta no projeto serão realizadas.
-    
-    \section{CRONOGRAMA}
+
+    \section{Cronograma}
     \begin{figure}[!htb]
         \centering
         \includegraphics[scale=0.6]{Imagens/Cronograma.png}
         \caption{Cronograma do Projeto}
     \end{figure}
+
+    \newpage %%
+    \section{Referências}
+    \noindent
+    PUC PR. Mercado De Jogos Digitais Cresce No Brasil E No Mundo. G1 Globo, 08/10/2018. Disponível em: \textless https://g1.globo.com/pr/parana/especial-publicitario/puc-pr/profissionais-do-amanha/noticia/2018/10/08/mercado-de-jogos-digitais-cresce-no-brasil-e-no-mundo.ghtml\textgreater. Acesso em: 15 Out. 2019. \\
     
+    \noindent
+    ITENS ‘COSMÉTICOS’ MOVIMENTAM CULTURA E ECONOMIA DOS JOGOS. E-Arena. Disponível em: \textless https://e-arena.com.br/itens-cosmeticos-movimentam-cultura-e-economia-dos-jogos/\textgreater. Acesso em: 14 Out. 2019. \\
+    
+    \noindent
+    MERCADO DE SKINS DE CS:GO PODE MOVIMENTAR ATÉ 10 BILHÕES DE DÓLARES POR ANO. The Enemy. Disponível em:\textless https://www.theenemy.com.br/esports/csgo-mercado-skins-10-bilhoes-valores-precos\textgreater. Acesso em: 14 Out. 2019. \\
+    
+    \noindent
+    NEWZOO ARTICLES. NewZoo. Disponível em: \textless https://newzoo.com/insights/articles/\textgreater. Acesso em: 15 Out. 2019. \\
+    
+    \noindent
+    SETOR DE GAMES CRESCE ACIMA DA MÉDIA NO PAÍS, MAS É O 13º DO MUNDO. O Tempo. Disponível em: \textless https://www.otempo.com.br/economia/subscription-required-7.5927739?aId=1.2224441\textgreater. Acesso em: 15 Out. 2019. \\
+
 \end{document}

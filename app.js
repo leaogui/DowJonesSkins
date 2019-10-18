@@ -3,6 +3,11 @@
 const express = require('express');
 const app = express();
 
+// declarando o uso da Template Engine 'handlebars'
+const handlebars = require('express-handlebars');
+app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
 // importando bibliotecas para criação de sessão
 const session = require('express-session');
 
@@ -73,45 +78,45 @@ app.use(function (req, res, next) {
 // definindo rotas
 app.get('/', (req, res) =>{
     if (!req.session.user){
-        res.sendFile(path.join(__dirname,'/HTML/index.html'));
+        res.render('index');
     } else{
-        res.sendFile(path.join(__dirname,'/HTML/index-logged.html'));
+        res.render('index-logged');
     }
 });
 
-app.get('/index.html', (req, res) =>{
+app.get('/index', (req, res) =>{
     if (!req.session.user){
-        res.sendFile(path.join(__dirname,'/HTML/index.html'));
+        res.render('index');
     } else{
-        res.sendFile(path.join(__dirname,'/HTML/index-logged.html'));
+        res.render('index-logged');
     }
 });
 
-app.get('/daytrade.html', (req, res) => {
-    res.sendFile(path.join(__dirname,'/HTML/daytrade.html'));
+app.get('/daytrade', (req, res) => {
+    res.render('daytrade');
 });
 
-app.get('/fairtrade.html', (req, res) =>{
-    if (!req.session.user){
-        res.redirect('/login');
-    } else{
-        res.sendFile(path.join(__dirname,'/HTML/fairtrade.html'));
-    }
-});
-
-app.get('/perfil.html', (req, res) =>{
+app.get('/fairtrade', (req, res) =>{
     if (!req.session.user){
         res.redirect('/login');
     } else{
-        res.sendFile(path.join(__dirname,'/HTML/perfil.html'));
+        res.render('fairtrade');
     }
 });
 
-app.get('/listaskins.html', (req, res) =>{
+app.get('/perfil', (req, res) =>{
     if (!req.session.user){
         res.redirect('/login');
     } else{
-        res.sendFile(path.join(__dirname,'/HTML/listaskins.html'));
+        res.render('perfil');
+    }
+});
+
+app.get('/listaskins', (req, res) =>{
+    if (!req.session.user){
+        res.redirect('/login');
+    } else{
+        res.render('listaskins');
     }
 });
 
