@@ -120,7 +120,20 @@ app.get('/listaskins', (req, res) =>{
     if (!req.session.user){
         res.redirect('/login');
     } else{
-        res.render('listaskins');
+        const steamid = req.session.user.steamid;
+        inventoryApi.get({
+            appid,
+            contextid,
+            steamid,
+            start_assetid,
+            count,
+            language,
+            tradable
+        }).then((result) => {
+            const inventorySkins = require('./JS/scripts/inventorySkins');
+            skinList = inventorySkins.getInventorySkins(result.items.map (item => item.market_hash_name));
+            res.render('listaskins', { user: req.session.user.username, skins: skinList});
+        });
     }
 });
 

@@ -34,7 +34,7 @@
 <section class="hero is-danger">
     <div class="hero-body">
     <div class="container">
-        <h1 class="title">Lista de skins de: (usuário)</h1>
+        <h1 class="title">Lista de skins de: {{user}}</h1>
     </div>
     </div>
 </section>
@@ -46,15 +46,9 @@
         <div class="tile is-parent">
             <article class="tile is-child notification is-roxofoda">
             <p class="title">Armas primárias.</p>
-            <p class="subtitle">M4A4 - Linhas Vermelhas</p>
-            <p class="subtitle">M4A4 - Linhas Vermelhas</p>
-            <p class="subtitle">M4A4 - Linhas Vermelhas</p>
-            <p class="subtitle">M4A4 - Linhas Vermelhas</p>
-            <p class="subtitle">M4A4 - Linhas Vermelhas</p>
-            <p class="subtitle">M4A4 - Linhas Vermelhas</p>
-            <p class="subtitle">M4A4 - Linhas Vermelhas</p>
-            <p class="subtitle">M4A4 - Linhas Vermelhas</p>
-            <p class="subtitle">M4A4 - Linhas Vermelhas</p>
+            {{#each skins}}
+                    <p class="subtitle">{{this}}</p>
+            {{/each}}
             </article>
         </div>
         </div>
