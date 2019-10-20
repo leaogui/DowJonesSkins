@@ -1,6 +1,6 @@
 function getInventorySkins(skinList){
     var filtrado = [];
-    skinList.forEach((element, index, array) => {
+    skinList.forEach((element) => {
         if (!element.includes('Case') && !element.includes('Sealed Graffiti')){
             filtrado.push(element);
         }
