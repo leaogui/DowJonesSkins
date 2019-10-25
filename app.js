@@ -134,7 +134,10 @@ app.get('/listaskins', (req, res) =>{
             const tradableSkins = require('./JS/Connections/Database/tradableSkins');
             steamList = inventorySkins.getInventorySkins(result.items.map (item => item.market_hash_name));
             tradableSkins.getTradableSkins(steamList, client).then(tradableList => {
-                res.render('listaskins', { user: req.session.user.username, steamList: steamList, tradableList: tradableList});
+                const skinsImages = require('./JS/Connections/Database/skinsImages');
+                skinsImages.getSkinsImages(tradableList, client).then(skinImages => {
+                    res.render('listaskins', { user: req.session.user.username, steamList: steamList, tradableList: tradableList, skinImages: skinImages});
+                });
             });
         });
     }

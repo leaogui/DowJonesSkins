@@ -47,7 +47,7 @@
             <article class="tile is-child notification is-roxofoda">
             <p class="title">Inventário Steam</p>
             {{#each steamList}}
-                    <p class="subtitle">{{this}}</p>
+                <p class="subtitle">{{this}}</p>
             {{/each}}
             </article>
         </div>
@@ -57,7 +57,11 @@
             <article class="tile is-child notification is-roxomedio">
             <p class="title">Armas trocáveis</p>
             {{#each tradableList}}
-                    <p class="subtitle">{{this}}</p>
+                <figure>
+                    <img src={{lookup ../skinImages @index }}>	
+                    <figcaption>{{this}}</figcaption>
+                </figure>
+                <button name="depositar {{@index}}" class="button is-success">Depositar Skin</button>
             {{/each}}
             </article>
         </div>
