@@ -1,6 +1,6 @@
 async function getSkinsImages(tradableSkins, client){
     const query = {
-        text: 'SELECT foto FROM skin WHERE nome = ANY ($1) ORDER BY nome',
+        text: 'SELECT foto FROM skin WHERE nome = ANY ($1) ORDER BY nome;',
         rowMode: 'array'
     }
     

@@ -1,21 +1,21 @@
 async function getTradableSkins(skinList, client){
     const query = {
-        text: 'SELECT nome FROM skin ORDER BY nome',
+        text: 'SELECT nome FROM skin ORDER BY nome;',
         rowMode: 'array'
     }
     
     var res = await client.query(query);
     tradableSkins = res.rows;
     var filtrado = [];
-    skinList.forEach((element1) => {
-        tradableSkins.forEach((element2) => {
-            element2 = JSON.stringify(element2);
-            element2 = element2.replace('"', '');
-            element2 = element2.replace('"', '');
-            element2 = element2.replace('[', '');
-            element2 = element2.replace(']', '');
-            if (element1.includes(element2) && !filtrado.includes(element2)){
-                filtrado.push(element2);
+    tradableSkins.forEach((element1) => {
+        element1 = JSON.stringify(element1);
+        element1 = element1.replace('"', '');
+        element1 = element1.replace('"', '');
+        element1 = element1.replace('[', '');
+        element1 = element1.replace(']', '');
+        skinList.forEach((element2) => {
+            if (element2.includes(element1) && !filtrado.includes(element1)){
+                filtrado.push(element1);
             }
         });
     });
