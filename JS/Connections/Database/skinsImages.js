@@ -1,6 +1,6 @@
 async function getSkinsImages(tradableSkins, client){
     const query = {
-        text: 'SELECT foto FROM skin WHERE nome = ANY ($1);',
+        text: 'SELECT foto FROM skin WHERE nome = ANY ($1)',
         rowMode: 'array'
     }
     
@@ -13,10 +13,7 @@ async function getSkinsImages(tradableSkins, client){
         element = element.replace('"', '');
         element = element.replace('[', '');
         element = element.replace(']', '');
-        tradableSkins.forEach((element2) =>{
-            if (element2.includes(element))
-                filtrado.push(element);
-        });
+        filtrado.push(element);
     });
     return filtrado;
 }
