@@ -1,6 +1,6 @@
 async function getTradableSkins(skinList, client){
     const query = {
-        text: 'SELECT nome FROM skin',
+        text: 'SELECT nome FROM skin ORDER BY nome',
         rowMode: 'array'
     }
     
