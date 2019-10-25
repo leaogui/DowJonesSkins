@@ -58,10 +58,10 @@
             <p class="title">Armas trocáveis</p>
             {{#each tradableList}}
                 <figure>
-                    <img src={{lookup ../skinImages @index }}>	
+                    <img src={{lookup ../skinImages @index}}>	
                     <figcaption>{{this}}</figcaption>
                 </figure>
-                <button name="depositar{{@index}}" class="button is-success" onclick="doTrade({{@index}})">Depositar Skin</button>
+                <button name="depositar {{@index}}" class="button is-success">Depositar Skin</button>
             {{/each}}
             </article>
         </div>
@@ -78,9 +78,3 @@
     </div>
     </div>
 </div>
-
-<script>
-    function doTrade(index){
-        //Faz a requisição para o servidor
-    }
-</script>
