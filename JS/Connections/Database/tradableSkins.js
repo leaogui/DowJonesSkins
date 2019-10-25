@@ -14,9 +14,8 @@ async function getTradableSkins(skinList, client){
             element2 = element2.replace('"', '');
             element2 = element2.replace('[', '');
             element2 = element2.replace(']', '');
-            if (element1.includes(element2)){
-                if (!filtrado.includes(element2))
-                    filtrado.push(element2);
+            if (element1.includes(element2) && !filtrado.includes(element2)){
+                filtrado.push(element2);
             }
         });
     });
