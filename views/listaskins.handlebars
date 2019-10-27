@@ -78,7 +78,13 @@
                     <img src={{lookup ../djsImages @index}}>	
                     <figcaption>{{this}}</figcaption>
                 </figure>
-                <button class="button is-success" onclick="retirarSkin('{{this}}')">Enviar para Steam</button>
+                {{#if (lookup ../investimentoList @index)}}
+                    <button disabled class="button is-success" title="Esta Skin está em um investimento">Enviar para Steam</button>
+                    <button disabled class="button is-primary" title="Esta Skin já está investida">Investir</button>
+                {{else}}
+                    <button class="button is-success" onclick="retirarSkin('{{this}}')">Enviar para Steam</button>
+                    <button class="button is-primary" onclick="investirSkin('{{this}}')">Investir</button>
+                {{/if}}
             {{/each}}
         </div>
         </article>
@@ -87,10 +93,14 @@
 </div>
 <script>
     function depositarSkin(skinName){
-        document.location.href = "/deposit?skin="+skinName;
+        document.location.href = "/depositar?skin="+skinName;
     }
 
     function retirarSkin(skinName){
         document.location.href = "/retirar?skin="+skinName;
+    }
+
+    function investirSkin(skinName){
+        document.location.href = "/investir?skin="+skinName;
     }
 </script>

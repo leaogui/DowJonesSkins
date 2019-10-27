@@ -1,10 +1,10 @@
-async function depositSkin (client, skin , steamId){
+async function investirSkin (client, skin, steamId){
     const query1 = {
         text: 'SELECT skinid FROM skin WHERE nome = ($1)',
         rowMode: 'array'
     }
     const query2 = {
-        text: "INSERT INTO inventario VALUES (($1), ($2), '0')",
+        text: "UPDATE inventario SET investida = '1' WHERE steamid = ($1) AND skinid = ($2)",
         rowMode: 'array'
     }
     var res1 = await client.query(query1, [skin]);
@@ -17,4 +17,4 @@ async function depositSkin (client, skin , steamId){
     await client.query(query2, [steamId, skinid]);
 }
 
-module.exports.depositSkin = depositSkin;
+module.exports.investirSkin = investirSkin;
