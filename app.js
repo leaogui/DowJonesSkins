@@ -132,14 +132,46 @@ app.get('/listaskins', (req, res) =>{
         }).then((result) => {
             const inventorySkins = require('./JS/scripts/inventorySkins');
             const tradableSkins = require('./JS/Connections/Database/tradableSkins');
+            const djsInventory = require('./JS/Connections/Database/getDjsInventory');
             steamList = inventorySkins.getInventorySkins(result.items.map (item => item.market_hash_name));
-            tradableSkins.getTradableSkins(steamList, client).then(tradableList => {
+            tradableSkins.getTradableSkins(req.session.user.steamid, steamList, client).then(tradableList => {
                 const skinsImages = require('./JS/Connections/Database/skinsImages');
                 skinsImages.getSkinsImages(tradableList, client).then(skinImages => {
-                    res.render('listaskins', { user: req.session.user.username, steamList: steamList, tradableList: tradableList, skinImages: skinImages});
+                    djsInventory.getDjsInventory(req.session.user.steamid, client).then(djsList =>{
+                        skinsImages.getSkinsImages(djsList, client).then(djsImages => {
+                            res.render('listaskins', { user: req.session.user.username, 
+                                steamList: steamList, 
+                                tradableList: tradableList, 
+                                skinImages: skinImages, 
+                                djsList: djsList,
+                                djsImages:djsImages
+                            });
+                        });
+                    });
                 });
             });
         });
+    }
+});
+
+// rota para depósito e retirada de skins do site
+app.get('/deposit', (req, res) =>{
+    if (!req.session.user){
+        res.redirect('/login');
+    } else{
+        const depositSkin = require('./JS/Connections/Database/depositSkin');
+        depositSkin.depositSkin(client, req.query.skin, req.session.user.steamid).then((result) =>{
+            res.redirect('listaskins');
+        });
+    }
+});
+
+app.get('/retirar', (req, res) =>{
+    if (!req.session.user){
+        res.redirect('/login');
+    } else{
+        const retirarSkin = require('./JS/Connections/Database/retirarSkin');
+        retirarSkin.retirarSkin(client, req.query.skin, req.session.user.steamid).then(res.redirect('listaskins'));
     }
 });
 

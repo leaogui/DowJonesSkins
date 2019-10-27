@@ -61,7 +61,7 @@
                     <img src={{lookup ../skinImages @index}}>	
                     <figcaption>{{this}}</figcaption>
                 </figure>
-                <button name="depositar {{@index}}" class="button is-success">Depositar Skin</button>
+                <button class="button is-success" onclick="depositarSkin('{{this}}')">Depositar Skin</button>
             {{/each}}
             </article>
         </div>
@@ -73,8 +73,24 @@
         <article class="tile is-child notification is-roxoclaro">
         <div id="fontebranca">
             <p class="title">Inventário DJSkins</p>
+            {{#each djsList}}
+                <figure>
+                    <img src={{lookup ../djsImages @index}}>	
+                    <figcaption>{{this}}</figcaption>
+                </figure>
+                <button class="button is-success" onclick="retirarSkin('{{this}}')">Enviar para Steam</button>
+            {{/each}}
         </div>
         </article>
     </div>
     </div>
 </div>
+<script>
+    function depositarSkin(skinName){
+        document.location.href = "/deposit?skin="+skinName;
+    }
+
+    function retirarSkin(skinName){
+        document.location.href = "/retirar?skin="+skinName;
+    }
+</script>

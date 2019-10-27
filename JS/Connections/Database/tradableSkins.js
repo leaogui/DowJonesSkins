@@ -1,10 +1,12 @@
-async function getTradableSkins(skinList, client){
+async function getTradableSkins(steamid, skinList, client){
+
+    const djsInventory = require('./getDjsInventory');
+    var depositedSkins = await djsInventory.getDjsInventory(steamid, client);
     const query = {
-        text: 'SELECT nome FROM skin ORDER BY nome;',
+        text: 'SELECT nome FROM skin WHERE nome <> ALL ($1) ORDER BY nome;',
         rowMode: 'array'
     }
-    
-    var res = await client.query(query);
+    var res = await client.query(query, [depositedSkins]);
     tradableSkins = res.rows;
     var filtrado = [];
     tradableSkins.forEach((element1) => {
