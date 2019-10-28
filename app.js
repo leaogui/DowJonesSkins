@@ -196,26 +196,12 @@ app.get('/login',steam.authenticate(), (req, res) =>{
 app.get('/verify', steam.verify(), function(req, res) {
     const json = req.user;
     console.log(json);
-    const steamid = json.steamid;
-
-    inventoryApi.get({
-        appid,
-        contextid,
-        steamid,
-        start_assetid,
-        count,
-        language,
-        tradable
-    }).then((res) => {
-        console.log('Total itens: ',res.total);
-        console.log('Itens: ', JSON.stringify(res.items.map (item => item.market_hash_name),null, 4));
+    const UserCRUD = require('./JS/Connections/Database/signUp');
+    UserCRUD.signUp(client, json).then(() =>{
+        req.session.user = json;
+        res.cookie('steamjson', JSON.stringify(json));
+        res.redirect('/');
     });
-
-    const UserCRUD = require('./JS/Connections/Database/UserCRUD');
-    UserCRUD.signUp(client, json);
-    req.session.user = json;
-    res.cookie('steamjson', JSON.stringify(json));
-    res.redirect('/');
 });
  
 app.get('/logout', steam.enforceLogin('/'), function(req, res) {
