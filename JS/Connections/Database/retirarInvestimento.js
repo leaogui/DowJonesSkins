@@ -1,10 +1,10 @@
-async function investirSkin (client, skin, steamId){
+async function retirarInvestimento (client, skin , steamId){
     const query1 = {
         text: 'SELECT skinid FROM skin WHERE nome = ($1)',
         rowMode: 'array'
     }
     const query2 = {
-        text: "UPDATE inventario SET investida = '1', data = ($1) WHERE steamid = ($2) AND skinid = ($3)",
+        text: 'UPDATE inventario set investida = false WHERE steamid = ($1) AND skinid = ($2)',
         rowMode: 'array'
     }
     var res1 = await client.query(query1, [skin]);
@@ -14,7 +14,7 @@ async function investirSkin (client, skin, steamId){
     skinid = skinid.replace('"', '');
     skinid = skinid.replace('[', '');
     skinid = skinid.replace(']', '');
-    await client.query(query2, [new Date(), steamId, skinid]);
+    await client.query(query2, [steamId, skinid]);
 }
 
-module.exports.investirSkin = investirSkin;
+module.exports.retirarInvestimento = retirarInvestimento;

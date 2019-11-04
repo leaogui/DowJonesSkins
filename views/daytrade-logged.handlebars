@@ -1,9 +1,11 @@
 <nav aria-label="dropdown navigation" class="navbar is-fixed-top">
-    <a class="navbar-item"></a><a href="index"><img alt="Global Logo" height="28" src="https://i.imgur.com/SZLoCjp.png" width="112"></a>
+    <a class="navbar-item"></a><a href="index"><img alt="Global Logo" height="28" src="https://i.imgur.com/SZLoCjp.png"
+            width="112"></a>
     <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">DJSkins</a>
         <div class="navbar-dropdown">
-            <a class="navbar-item" href="daytrade">Day Trade</a> <a class="navbar-item" href="fairtrade">Fair Trade</a> <a class="navbar-item" href="perfil">Minha Conta</a> <a class="navbar-item">Configurações</a>
+            <a class="navbar-item" href="daytrade">Day Trade</a> <a class="navbar-item" href="fairtrade">Fair Trade</a>
+            <a class="navbar-item" href="perfil">Minha Conta</a> <a class="navbar-item">Configurações</a>
             <hr class="navbar-divider">
             <div class="navbar-item">
                 Beta 0.1
@@ -18,10 +20,10 @@
     <div class="navbar-item">
         <div class="buttons">
             <a class="navbar-end button is-dark is-outlined" href="/logout">
-            <span class="icon">
-                <i class="fas fa-door-open"></i>
-            </span>
-            <span>Logout</span>
+                <span class="icon">
+                    <i class="fas fa-door-open"></i>
+                </span>
+                <span>Logout</span>
             </a>
         </div>
     </div>
@@ -42,35 +44,32 @@
             <div class="tile is-parent is-vertical">
                 <div class="tile is-parent">
                     <article class="tile is-child notification is-roxofoda">
-                        <p class="title">Armas mais valiosas!</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
+                        <p class="title">Meus Investimentos</p>
+                        {{#each myList}}
+                        <figure>
+                            <img src={{lookup ../myImages @index}}>
+                            <figcaption>{{this}}</figcaption>
+                        </figure>
+                        {{#if (lookup ../dataList @index)}}
+                            <button class="button is-primary" onclick="retirarInvestimento('{{this}}')">Retirar Investimento</button>
+                        {{else}}
+                            <button disabled class="button is-primary" title="O investimento foi feito a menos de 1 mês">Retirar Investimento</button>
+                        {{/if}}
+                        {{/each}}
                     </article>
                 </div>
             </div>
             <div class="tile is-parent is-vertical">
                 <div class="tile is-parent">
                     <article class="tile is-child notification is-roxomedio">
-                        <p class="title">Últimas armas depositadas</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
-                        <p class="subtitle">Verilog - R$ 500,00</p>
+                        <p class="title">Ofertas</p>
+                        {{#each ofertasNome}}
+                        <figure>
+                            <img src={{lookup ../ofertasImagens @index}}>
+                            <figcaption>{{this}}</figcaption>
+                        </figure>
+                        <button class="button is-success" onclick="comprarSkin('{{this}}')">Comprar (R$ {{lookup ../precoSkins @index}})</button>
+                        {{/each}}
                     </article>
                 </div>
             </div>
@@ -80,77 +79,19 @@
         <div class="tile is-parent">
             <article class="tile is-child notification is-roxoclaro">
                 <div id="corfontecoluna">
-                    <p class="title">Últimas armas depositadas</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
+                    <p class="title">Histórico de Venda</p>
                 </div>
             </article>
         </div>
     </div>
 </div>
-<div class="tile is-ancestor">
-    <div class="tile is-vertical is-8">
-        <div class="tile">
-            <div class="tile is-parent is-vertical">
-                <div class="tile is-parent">
-                    <article class="tile is-child notification is-roxofoda">
-                        <p class="title">Armas mais valiosas!</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                        <p class="subtitle">AWP - Asiimov - R$ 1900,00</p>
-                    </article>
-                </div>
-            </div>
-            <div class="tile is-parent is-vertical">
-                <div class="tile is-parent">
-                    <article class="tile is-child notification is-roxomedio">
-                        <div id="corfontecoluna">
-                            <p class="title">Últimas armas depositadas</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                            <p class="subtitle">Verilog - R$ 500,00</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="tile is-parent is-vertical">
-        <div class="tile is-parent">
-            <article class="tile is-child notification is-roxoclaro">
-                <div id="corfontecoluna">
-                    <p class="title">Últimas armas depositadas</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                    <p class="subtitle">Verilog - R$ 500,00</p>
-                </div>
-            </article>
-        </div>
-    </div>
-</div>
+
+<script>
+    function retirarInvestimento(skinName){
+        document.location.href = "/retirarInvestimento?skin="+skinName;
+    }
+
+    function comprarSkin(skinName){
+        document.location.href = "/comprarSkin?skin="+skinName;
+    }
+</script>

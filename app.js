@@ -94,9 +94,34 @@ app.get('/index', (req, res) =>{
 
 app.get('/daytrade', (req, res) => {
     if (!req.session.user){
-        res.render('daytrade');
+        res.redirect('/login');
     } else{
-        res.render('daytrade-logged');
+        const skinsImages = require('./JS/Connections/Database/skinsImages');
+        const allInvestimentos = require('./JS/Connections/Database/getAllInvestimentos');
+        const ofertasPrice = require('./JS/Connections/Database/getOfertasPrice');
+        const myInvestimentos = require('./JS/Connections/Database/getMyInvestimentos');
+        const getData = require('./JS/Connections/Database/getData');
+        allInvestimentos.getAllInvestimentos(req.session.user.steamid, client).then(ofertasNome =>{
+            skinsImages.getSkinsImages(ofertasNome, client).then(ofertasImagens => {
+                ofertasPrice.getOfertasPrice(ofertasNome, client).then(precoSkins =>{
+                    myInvestimentos.getMyInvestimentos(req.session.user.steamid, client).then(myList => {
+                        skinsImages.getSkinsImages(myList, client).then(myImages => {
+                            getData.getData(myList, req.session.user.steamid, client).then(dataList =>{
+                                res.render('daytrade-logged', {
+                                    precoSkins: precoSkins,
+                                    myList: myList,
+                                    myImages: myImages,
+                                    dataList: dataList,
+                                    ofertasImagens: ofertasImagens, 
+                                    ofertasNome: ofertasNome,
+                                    ofertasPrice: ofertasPrice
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
     }
 });
 
@@ -185,6 +210,24 @@ app.get('/investir', (req, res) =>{
     } else{
         const investirSkin = require('./JS/Connections/Database/investirSkin');
         investirSkin.investirSkin(client, req.query.skin, req.session.user.steamid).then(res.redirect('listaskins'));
+    }
+});
+
+app.get('/retirarInvestimento', (req, res) =>{
+    if (!req.session.user){
+        res.redirect('/login');
+    } else{
+        const retirarInvestimento = require('./JS/Connections/Database/retirarInvestimento');
+        retirarInvestimento.retirarInvestimento(client, req.query.skin, req.session.user.steamid).then(res.redirect('/daytrade'));
+    }
+});
+
+app.get('/comprarSkin', (req, res) =>{
+    if (!req.session.user){
+        res.redirect('/login');
+    } else{
+        const comprarSkin = require('./JS/Connections/Database/comprarSkin');
+        comprarSkin.comprarSkin(client, req.query.skin, req.session.user.steamid).then(res.redirect('/daytrade'));
     }
 });
 

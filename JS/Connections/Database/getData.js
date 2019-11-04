@@ -1,15 +1,15 @@
-async function getInvestimentos(djsSkins, steamid, client){
+async function getData(skins, steamid, client){
     const query1 = {
         text: 'SELECT skinid FROM skin WHERE nome = ANY ($1) ORDER BY nome;',
         rowMode: 'array'
     }
 
     const query2 = {
-        text: 'SELECT investida FROM inventario i INNER JOIN skin s on i.skinid = s.skinid WHERE i.skinid = ANY ($1) AND steamid = ($2) ORDER BY nome;',
+        text: 'SELECT data FROM inventario i INNER JOIN skin s on i.skinid = s.skinid WHERE i.skinid = ANY ($1) AND steamid = ($2) ORDER BY nome;',
         rowMode: 'array'
     }
     
-    var res = await client.query(query1, [djsSkins]);
+    var res = await client.query(query1, [skins]);
     resultado1 = res.rows;
     var cleaned1 = [];
     resultado1.forEach((element) => {
@@ -30,10 +30,15 @@ async function getInvestimentos(djsSkins, steamid, client){
         element = element.replace('"', '');
         element = element.replace('[', '');
         element = element.replace(']', '');
-        element = (element == 'true');
+        var dia = element.slice(8, 10);
+        var mes = element.slice(5, 7);
+        var ano = element.slice(0, 4);
+        var diferenca = (new Date() - new Date(ano, parseInt(mes)-1, dia));
+        diferenca = diferenca / (1000 * 3600 * 24);
+        element = (diferenca >= 31);
         cleaned2.push(element);
     });
     return cleaned2;
 }
 
-module.exports.getInvestimentos = getInvestimentos;
+module.exports.getData = getData;

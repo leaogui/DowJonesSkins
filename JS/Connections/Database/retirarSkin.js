@@ -14,7 +14,6 @@ async function retirarSkin (client, skin , steamId){
     skinid = skinid.replace('"', '');
     skinid = skinid.replace('[', '');
     skinid = skinid.replace(']', '');
-    console.log(skinid);
     await client.query(query2, [steamId, skinid]);
 }
 
