@@ -16,7 +16,7 @@ async function getTradableSkins(steamid, skinList, client){
         element1 = element1.replace('[', '');
         element1 = element1.replace(']', '');
         skinList.forEach((element2) => {
-            if (element2.includes(element1) && !filtrado.includes(element1)){
+            if (element2.includes(element1)){
                 filtrado.push(element1);
             }
         });

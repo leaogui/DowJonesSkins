@@ -1,11 +1,16 @@
 async function getSkinsImages(tradableSkins, client){
     const query = {
-        text: 'SELECT foto FROM skin WHERE nome = ANY ($1) ORDER BY nome',
+        text: 'SELECT foto FROM skin WHERE nome = ($1);',
         rowMode: 'array'
     }
     
-    var res = await client.query(query, [tradableSkins]);
-    var skinsImages = res.rows;
+
+    var skinsImages = [];
+    for(i = 0; i < tradableSkins.length; i++){
+        var res = await client.query(query, [tradableSkins[i]]);
+        skinsImages = skinsImages.concat(res.rows);
+    }
+    
     var filtrado = [];
     skinsImages.forEach((element) => {
         element = JSON.stringify(element);

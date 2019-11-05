@@ -1,37 +1,22 @@
 async function getAllInvestimentos(steamid, client){
-    const query1 = {
-        text: 'SELECT DISTINCT skinid FROM inventario where steamid <> ($1) and investida = true;',
-        rowMode: 'array'
-    }
 
-    const query2 = {
-        text: 'SELECT nome FROM skin WHERE skinid = ANY ($1) ORDER BY nome;',
+    const query = {
+        text: 'SELECT DISTINCT nome FROM skin s INNER JOIN inventario i ON s.skinid = i.skinid WHERE steamid <> ($1) and investida = true ORDER BY nome;',
         rowMode: 'array'
     }
     
-    var res = await client.query(query1, [steamid]);
-    resultado1 = res.rows;
-    var cleaned1 = [];
-    resultado1.forEach((element) => {
+    var res = await client.query(query, [steamid]);
+    resultado = res.rows;
+    var cleaned = [];
+    resultado.forEach((element) => {
         element = JSON.stringify(element);
         element = element.replace('"', '');
         element = element.replace('"', '');
         element = element.replace('[', '');
         element = element.replace(']', '');
-        cleaned1.push(element);
+        cleaned.push(element);
     });
-    var res2 = await client.query(query2, [cleaned1]);
-    resultado2 = res2.rows;
-    var cleaned2 = [];
-    resultado2.forEach((element) => {
-        element = JSON.stringify(element);
-        element = element.replace('"', '');
-        element = element.replace('"', '');
-        element = element.replace('[', '');
-        element = element.replace(']', '');
-        cleaned2.push(element);
-    });
-    return cleaned2;
+    return cleaned;
 }
 
 module.exports.getAllInvestimentos = getAllInvestimentos;
