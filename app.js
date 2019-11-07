@@ -5,7 +5,7 @@ const app = express();
 
 // declarando o uso da Template Engine 'handlebars'
 const handlebars = require('express-handlebars');
-app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // importando bibliotecas para criação de sessão
@@ -24,7 +24,7 @@ const SwitchSteamKey = require('./JS/Connections/Steam/SwitchSteamKey');
 const key = SwitchSteamKey.getKey(PORT);
 
 // importando e definindo conexão com a Steam
-const steam   = require('steam-login');
+const steam = require('steam-login');
 const SwitchSteamConnection = require('./JS/Connections/Steam/SwitchSteamConnection');
 SwitchSteamConnection.getConnection(app, steam, PORT, key);
 
@@ -45,7 +45,7 @@ inventoryApi.init({
     id: 'invSteam',
     proxyRepeat: 1,
     maxUse: 25,
-    requestInterval: 60 
+    requestInterval: 60
 });
 
 const contextid = 2;
@@ -76,45 +76,59 @@ app.use(function (req, res, next) {
 });
 
 // definindo rotas
-app.get('/', (req, res) =>{
-    if (!req.session.user){
+app.get('/', (req, res) => {
+    if (!req.session.user) {
         res.render('index');
-    } else{
-        res.render('index-logged');
+    } else {
+        const carteira = require('./JS/Connections/Database/getSaldo');
+        carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
+            res.render('index-logged', { saldo: saldo });
+        });
     }
 });
 
-app.get('/index', (req, res) =>{
-    if (!req.session.user){
+app.get('/index', (req, res) => {
+    if (!req.session.user) {
         res.render('index');
-    } else{
-        res.render('index-logged');
+    } else {
+        const carteira = require('./JS/Connections/Database/getSaldo');
+        carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
+            res.render('index-logged', { saldo: saldo });
+        });
     }
 });
 
 app.get('/daytrade', (req, res) => {
-    if (!req.session.user){
+    if (!req.session.user) {
         res.redirect('/login');
-    } else{
+    } else {
         const skinsImages = require('./JS/Connections/Database/skinsImages');
         const allInvestimentos = require('./JS/Connections/Database/getAllInvestimentos');
         const ofertasPrice = require('./JS/Connections/Database/getOfertasPrice');
         const myInvestimentos = require('./JS/Connections/Database/getMyInvestimentos');
         const getData = require('./JS/Connections/Database/getData');
-        allInvestimentos.getAllInvestimentos(req.session.user.steamid, client).then(ofertasNome =>{
+        const getHist = require('./JS/Connections/Database/getHistorico');
+        const carteira = require('./JS/Connections/Database/getSaldo');
+        allInvestimentos.getAllInvestimentos(req.session.user.steamid, client).then(ofertasNome => {
             skinsImages.getSkinsImages(ofertasNome, client).then(ofertasImagens => {
-                ofertasPrice.getOfertasPrice(ofertasNome, client).then(precoSkins =>{
+                ofertasPrice.getOfertasPrice(ofertasNome, client).then(precoSkins => {
                     myInvestimentos.getMyInvestimentos(req.session.user.steamid, client).then(myList => {
                         skinsImages.getSkinsImages(myList, client).then(myImages => {
-                            getData.getData(myList, req.session.user.steamid, client).then(dataList =>{
-                                res.render('daytrade-logged', {
-                                    precoSkins: precoSkins,
-                                    myList: myList,
-                                    myImages: myImages,
-                                    dataList: dataList,
-                                    ofertasImagens: ofertasImagens, 
-                                    ofertasNome: ofertasNome,
-                                    ofertasPrice: ofertasPrice
+                            getData.getData(myList, req.session.user.steamid, client).then(dataList => {
+                                getHist.getHistorico(req.session.user.steamid, client).then(historicoList => {
+                                    carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
+                                        res.render('daytrade-logged', {
+                                            precoSkins: precoSkins,
+                                            myList: myList,
+                                            myImages: myImages,
+                                            dataList: dataList,
+                                            ofertasImagens: ofertasImagens,
+                                            ofertasNome: ofertasNome,
+                                            ofertasPrice: ofertasPrice,
+                                            historicoList: historicoList,
+                                            saldo: saldo
+                                        });
+                                    });
                                 });
                             });
                         });
@@ -125,26 +139,32 @@ app.get('/daytrade', (req, res) => {
     }
 });
 
-app.get('/fairtrade', (req, res) =>{
-    if (!req.session.user){
+app.get('/fairtrade', (req, res) => {
+    if (!req.session.user) {
         res.redirect('/login');
-    } else{
-        res.render('fairtrade');
+    } else {
+        const carteira = require('./JS/Connections/Database/getSaldo');
+        carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
+            res.render('fairtrade', { saldo: saldo });
+        });
     }
 });
 
-app.get('/perfil', (req, res) =>{
-    if (!req.session.user){
+app.get('/perfil', (req, res) => {
+    if (!req.session.user) {
         res.redirect('/login');
-    } else{
-        res.render('perfil');
+    } else {
+        const carteira = require('./JS/Connections/Database/getSaldo');
+        carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
+            res.render('perfil', { saldo: saldo });
+        });
     }
 });
 
-app.get('/listaskins', (req, res) =>{
-    if (!req.session.user){
+app.get('/listaskins', (req, res) => {
+    if (!req.session.user) {
         res.redirect('/login');
-    } else{
+    } else {
         const steamid = req.session.user.steamid;
         inventoryApi.get({
             appid,
@@ -160,19 +180,24 @@ app.get('/listaskins', (req, res) =>{
             const djsInventory = require('./JS/Connections/Database/getDjsInventory');
             const skinsImages = require('./JS/Connections/Database/skinsImages');
             const skinsInvestidas = require('./JS/Connections/Database/getInvestimentos');
-            steamList = inventorySkins.getInventorySkins(result.items.map (item => item.market_hash_name));
+            const carteira = require('./JS/Connections/Database/getSaldo');
+            steamList = inventorySkins.getInventorySkins(result.items.map(item => item.market_hash_name));
             tradableSkins.getTradableSkins(req.session.user.steamid, steamList, client).then(tradableList => {
                 skinsImages.getSkinsImages(tradableList, client).then(skinImages => {
-                    djsInventory.getDjsInventory(req.session.user.steamid, client).then(djsList =>{
+                    djsInventory.getDjsInventory(req.session.user.steamid, client).then(djsList => {
                         skinsImages.getSkinsImages(djsList, client).then(djsImages => {
-                            skinsInvestidas.getInvestimentos(djsList, req.session.user.steamid, client).then(investimentoList =>{
-                                res.render('listaskins', { user: req.session.user.username, 
-                                    steamList: steamList, 
-                                    tradableList: tradableList, 
-                                    skinImages: skinImages, 
-                                    djsList: djsList,
-                                    djsImages:djsImages,
-                                    investimentoList: investimentoList
+                            skinsInvestidas.getInvestimentos(djsList, req.session.user.steamid, client).then(investimentoList => {
+                                carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
+                                    res.render('listaskins', {
+                                        user: req.session.user.username,
+                                        steamList: steamList,
+                                        tradableList: tradableList,
+                                        skinImages: skinImages,
+                                        djsList: djsList,
+                                        djsImages: djsImages,
+                                        investimentoList: investimentoList,
+                                        saldo: saldo
+                                    });
                                 });
                             });
                         });
@@ -183,74 +208,85 @@ app.get('/listaskins', (req, res) =>{
     }
 });
 
-// rotas para depósitar, retirar e investir em skins
-app.get('/depositar', (req, res) =>{
-    if (!req.session.user){
+app.get('/gerenciador-carteira', (req, res) => {
+    if (!req.session.user) {
         res.redirect('/login');
-    } else{
+    } else {
+        const carteira = require('./JS/Connections/Database/getSaldo');
+        carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
+            res.render('carteira', { saldo: saldo });
+        });
+    }
+});
+
+// rotas para depósitar, retirar e investir em skins
+app.get('/depositar', (req, res) => {
+    if (!req.session.user) {
+        res.redirect('/login');
+    } else {
         const depositSkin = require('./JS/Connections/Database/depositSkin');
-        depositSkin.depositSkin(client, req.query.skin, req.session.user.steamid).then((result) =>{
+        depositSkin.depositSkin(client, req.query.skin, req.session.user.steamid).then((result) => {
             res.redirect('listaskins');
         });
     }
 });
 
-app.get('/retirar', (req, res) =>{
-    if (!req.session.user){
+app.get('/retirar', (req, res) => {
+    if (!req.session.user) {
         res.redirect('/login');
-    } else{
+    } else {
         const retirarSkin = require('./JS/Connections/Database/retirarSkin');
         retirarSkin.retirarSkin(client, req.query.skin, req.session.user.steamid).then(res.redirect('listaskins'));
     }
 });
 
-app.get('/investir', (req, res) =>{
-    if (!req.session.user){
+app.get('/investir', (req, res) => {
+    if (!req.session.user) {
         res.redirect('/login');
-    } else{
+    } else {
         const investirSkin = require('./JS/Connections/Database/investirSkin');
         investirSkin.investirSkin(client, req.query.skin, req.session.user.steamid).then(res.redirect('listaskins'));
     }
 });
 
-app.get('/retirarInvestimento', (req, res) =>{
-    if (!req.session.user){
+app.get('/retirarInvestimento', (req, res) => {
+    if (!req.session.user) {
         res.redirect('/login');
-    } else{
+    } else {
         const retirarInvestimento = require('./JS/Connections/Database/retirarInvestimento');
         retirarInvestimento.retirarInvestimento(client, req.query.skin, req.session.user.steamid).then(res.redirect('/daytrade'));
     }
 });
 
-app.get('/comprarSkin', (req, res) =>{
-    if (!req.session.user){
+app.get('/comprarSkin', (req, res) => {
+    if (!req.session.user) {
         res.redirect('/login');
-    } else{
+    } else {
         const comprarSkin = require('./JS/Connections/Database/comprarSkin');
         comprarSkin.comprarSkin(client, req.query.skin, req.session.user.steamid).then(res.redirect('/daytrade'));
     }
 });
 
 // rotas da conexão à Steam
-app.get('/login',steam.authenticate(), (req, res) =>{
+app.get('/login', steam.authenticate(), (req, res) => {
     res.redirect('/');
 });
 
-app.get('/verify', steam.verify(), function(req, res) {
+app.get('/verify', steam.verify(), function (req, res) {
     const json = req.user;
     console.log(json);
     const UserCRUD = require('./JS/Connections/Database/signUp');
-    UserCRUD.signUp(client, json).then(() =>{
+    UserCRUD.signUp(client, json).then(() => {
         req.session.user = json;
         res.cookie('steamjson', JSON.stringify(json));
         res.redirect('/');
     });
 });
- 
-app.get('/logout', steam.enforceLogin('/'), function(req, res) {
-    if (!req.session.user){
+
+app.get('/logout', steam.enforceLogin('/'), function (req, res) {
+    if (!req.session.user) {
         res.redirect('/');
-    } else{
+    } else {
         req.logout();
         res.clearCookie(SESS_NAME);
         req.session.destroy();
@@ -259,8 +295,8 @@ app.get('/logout', steam.enforceLogin('/'), function(req, res) {
 });
 
 // startando aplicação no gateway selecionado
-app.listen(PORT, () =>{
+app.listen(PORT, () => {
     console.log("Rodando");
-    console.log ('Porta: ' + PORT);
-    console.log ('API Key: ' + key);
+    console.log('Porta: ' + PORT);
+    console.log('API Key: ' + key);
 });
