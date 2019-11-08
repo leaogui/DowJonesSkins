@@ -83,6 +83,9 @@
             <article class="tile is-child notification is-roxoclaro">
                 <div id="corfontecoluna">
                     <p class="title">Histórico de Venda</p>
+                    {{#each historicoList}}
+                        <p>{{this}}</p>
+                    {{/each}}
                 </div>
             </article>
         </div>
