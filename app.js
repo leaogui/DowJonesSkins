@@ -219,7 +219,7 @@ app.get('/gerenciador-carteira', (req, res) => {
     }
 });
 
-// rotas para depósitar, retirar e investir em skins
+// rotas para depósitar, retirar e investir skins e dinheiro
 app.get('/depositar', (req, res) => {
     if (!req.session.user) {
         res.redirect('/login');
@@ -264,6 +264,24 @@ app.get('/comprarSkin', (req, res) => {
     } else {
         const comprarSkin = require('./JS/Connections/Database/comprarSkin');
         comprarSkin.comprarSkin(client, req.query.skin, req.session.user.steamid).then(res.redirect('/daytrade'));
+    }
+});
+
+app.get('/depositar-carteira', (req, res) => {
+    if (!req.session.user) {
+        res.redirect('/login');
+    } else {
+        const depositarCarteira = require('./JS/Connections/Database/depositarCarteira');
+        depositarCarteira.depositarCarteira(req.session.user.steamid, client).then(res.redirect('/gerenciador-carteira'));
+    }
+});
+
+app.get('/sacar-carteira', (req, res) => {
+    if (!req.session.user) {
+        res.redirect('/login');
+    } else {
+        const sacarCarteira = require('./JS/Connections/Database/sacarCarteira');
+        sacarCarteira.sacarCarteira(req.query.qtd, req.session.user.steamid, client).then(res.redirect('/gerenciador-carteira'));
     }
 });
 

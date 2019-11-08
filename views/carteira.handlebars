@@ -33,3 +33,58 @@
         </div>
     </div>
 </nav>
+
+<section class="hero is-danger">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title level-item">Carteira DowJones Skins</h1>
+            <h2 class="subtitle level-item">Saldo Atual: R${{saldo}}</h2>
+        </div>
+    </div>
+</section>
+
+<div class="tile is-ancestor">
+    <div class="tile is-vertical">
+        <div class="tile">
+            <div class="tile is-parent is-vertical">
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-roxofoda">
+                        <div id="corfontecoluna">
+                            <p class="title level-item">Retirar da Carteira</p>
+                            <label class="level-item" for="qtd">Quantia a retirar:
+                                <input type="number" name="qtd" id="qtd">
+                            </label>
+                            </br>
+                            <label class="level-item" for="sacar">
+                                <button class="button is-success" onclick="sacar(document.getElementById('qtd').value)">Retirar Quantia</button>
+                            </label>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tile is-parent is-vertical">
+        <div class="tile is-parent">
+            <article class="tile is-child notification is-roxoclaro">
+                <div id="corfontecoluna level-item">
+                    <p class="title level-item">Despositar na Carteira</p>
+                    <p class="subtitle level-item">Valor de Deposito: (R$15,00)</p>
+                    <label class="level-item" for="depositar">
+                        <button class="button is-success" name="depositar" onclick="depositar()">Depositar</button>
+                    </label>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script>
+    function depositar(){
+        document.location.href = "/depositar-carteira";
+    }
+
+    function sacar(qtd){
+        document.location.href = "/sacar-carteira?qtd="+qtd;
+    }
+</script>
