@@ -51,6 +51,7 @@
             <p class="title">Inventário Steam</p>
             {{#each steamList}}
                 <p class="subtitle">{{this}}</p>
+                <hr>
             {{/each}}
             </article>
         </div>
@@ -65,6 +66,7 @@
                     <figcaption>{{this}}</figcaption>
                 </figure>
                 <button class="button is-success" onclick="depositarSkin('{{this}}')">Depositar Skin</button>
+                <hr>
             {{/each}}
             </article>
         </div>
@@ -88,6 +90,7 @@
                     <button class="button is-success" onclick="retirarSkin('{{this}}')">Enviar para Steam</button>
                     <button class="button is-primary" onclick="investirSkin('{{this}}')">Investir</button>
                 {{/if}}
+                <hr>
             {{/each}}
         </div>
         </article>

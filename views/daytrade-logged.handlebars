@@ -54,10 +54,13 @@
                             <figcaption>{{this}}</figcaption>
                         </figure>
                         {{#if (lookup ../dataList @index)}}
-                            <button class="button is-primary" onclick="retirarInvestimento('{{this}}')">Retirar Investimento</button>
+                        <button class="button is-primary" onclick="retirarInvestimento('{{this}}')">Retirar
+                            Investimento</button>
                         {{else}}
-                            <button disabled class="button is-primary" title="O investimento foi feito a menos de 1 mês">Retirar Investimento</button>
+                        <button disabled class="button is-primary"
+                            title="O investimento foi feito a menos de 1 mês">Retirar Investimento</button>
                         {{/if}}
+                        <hr>
                         {{/each}}
                     </article>
                 </div>
@@ -71,7 +74,9 @@
                             <img src={{lookup ../ofertasImagens @index}}>
                             <figcaption>{{this}}</figcaption>
                         </figure>
-                        <button class="button is-success" onclick="comprarSkin('{{this}}')">Comprar (R$ {{lookup ../precoSkins @index}})</button>
+                        <button class="button is-success" onclick="comprarSkin('{{this}}')">Comprar (R$
+                            {{lookup ../precoSkins @index}})</button>
+                        <hr>
                         {{/each}}
                     </article>
                 </div>
@@ -83,8 +88,36 @@
             <article class="tile is-child notification is-roxoclaro">
                 <div id="corfontecoluna">
                     <p class="title">Histórico de Venda</p>
+                    <p class="subtitle">Suas vendas:</p>
                     {{#each historicoList}}
-                        <p>{{this}}</p>
+                        {{#if this.[0]}}
+                            <p><b>Comprador:</b> {{this.[1]}}</p>
+                            <p><b>Arma:</b> 
+                                <figure>
+                                    <img src={{this.[3]}}>
+                                    <figcaption>{{this.[2]}}</figcaption>
+                                </figure>
+                            </p>
+                            <p><b>Preço:</b> R${{this.[4]}}</p>
+                            <p><b>Data da Venda:</b> {{this.[5]}}</p>
+                            <hr>
+                        {{/if}} 
+                    {{/each}}
+                        <p class="subtitle">Suas compras:</p>
+                    {{#each historicoList}}
+                        {{#if this.[0]}}
+                        {{else}}
+                            <p><b>Vendedor:</b> {{this.[1]}}</p>
+                            <p><b>Arma:</b>
+                                <figure>
+                                    <img src={{this.[3]}}>
+                                    <figcaption>{{this.[2]}}</figcaption>
+                                </figure>
+                            </p>
+                            <p><b>Preço:</b> R${{this.[4]}}</p>
+                            <p><b>Data da Venda:</b> {{this.[5]}}</p>
+                            <hr>
+                        {{/if}}
                     {{/each}}
                 </div>
             </article>
@@ -93,11 +126,11 @@
 </div>
 
 <script>
-    function retirarInvestimento(skinName){
-        document.location.href = "/retirarInvestimento?skin="+skinName;
+    function retirarInvestimento(skinName) {
+        document.location.href = "/retirarInvestimento?skin=" + skinName;
     }
 
-    function comprarSkin(skinName){
-        document.location.href = "/comprarSkin?skin="+skinName;
+    function comprarSkin(skinName) {
+        document.location.href = "/comprarSkin?skin=" + skinName;
     }
 </script>
