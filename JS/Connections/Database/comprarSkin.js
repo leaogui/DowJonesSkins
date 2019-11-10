@@ -30,6 +30,10 @@ async function comprarSkin (client, skin, steamId){
         rowMode: 'array'
     }
 
+    const query7 = {
+        text: 'UPDATE skin SET preco = ($1) WHERE skinid = ($2);',
+        rowMode: 'array'
+    }
 
     var res1 = await client.query(query1, [steamId]);
     var saldo = arrayCleaner.arrayCleaner(res1.rows[0]);
@@ -40,13 +44,16 @@ async function comprarSkin (client, skin, steamId){
     if (parseFloat(saldo[0]) >= parseFloat(skinInfo[1])){
 
         var valor = parseFloat(saldo[0]) - parseFloat(skinInfo[1]);
-        await client.query(query6, [valor, steamId]);
+        await client.query(query6, [valor.toFixed(2), steamId]);
 
         var res3 = await client.query(query3, [steamId, skinInfo[0]]);
         var steamIdOwner = arrayCleaner.arrayCleaner(res3.rows[0]);
 
         await client.query(query4, [steamId, steamIdOwner[0], skinInfo[0]]);
         await client.query(query5, [steamIdOwner[0], steamId, skinInfo[0], skinInfo[1], new Date()]);
+
+        var precoNovo = parseFloat(skinInfo[1]) + (parseFloat(skinInfo[1])*0.05);
+        await client.query(query7, [precoNovo.toFixed(2), skinInfo[0]]);
     }
 }
 

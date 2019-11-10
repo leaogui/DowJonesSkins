@@ -109,24 +109,28 @@ app.get('/daytrade', (req, res) => {
         const getData = require('./JS/Connections/Database/getData');
         const getHist = require('./JS/Connections/Database/getHistorico');
         const carteira = require('./JS/Connections/Database/getSaldo');
+        const myPrice = require('./JS/Connections/Database/getMySkinsPrice');
         allInvestimentos.getAllInvestimentos(req.session.user.steamid, client).then(ofertasNome => {
             skinsImages.getSkinsImages(ofertasNome, client).then(ofertasImagens => {
                 ofertasPrice.getOfertasPrice(ofertasNome, client).then(precoSkins => {
                     myInvestimentos.getMyInvestimentos(req.session.user.steamid, client).then(myList => {
-                        skinsImages.getSkinsImages(myList, client).then(myImages => {
-                            getData.getData(myList, req.session.user.steamid, client).then(dataList => {
-                                getHist.getHistorico(req.session.user.steamid, client).then(historicoList => {
-                                    carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
-                                        res.render('daytrade-logged', {
-                                            precoSkins: precoSkins,
-                                            myList: myList,
-                                            myImages: myImages,
-                                            dataList: dataList,
-                                            ofertasImagens: ofertasImagens,
-                                            ofertasNome: ofertasNome,
-                                            ofertasPrice: ofertasPrice,
-                                            historicoList: historicoList,
-                                            saldo: saldo
+                        myPrice.getMySkinsPrice(req.session.user.steamid, client).then(myPriceList =>{
+                            skinsImages.getSkinsImages(myList, client).then(myImages => {
+                                getData.getData(myList, req.session.user.steamid, client).then(dataList => {
+                                    getHist.getHistorico(req.session.user.steamid, client).then(historicoList => {
+                                        carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
+                                            res.render('daytrade-logged', {
+                                                precoSkins: precoSkins,
+                                                myList: myList,
+                                                myPrice: myPriceList,
+                                                myImages: myImages,
+                                                dataList: dataList,
+                                                ofertasImagens: ofertasImagens,
+                                                ofertasNome: ofertasNome,
+                                                ofertasPrice: ofertasPrice,
+                                                historicoList: historicoList,
+                                                saldo: saldo
+                                            });
                                         });
                                     });
                                 });
@@ -181,22 +185,26 @@ app.get('/listaskins', (req, res) => {
             const skinsImages = require('./JS/Connections/Database/skinsImages');
             const skinsInvestidas = require('./JS/Connections/Database/getInvestimentos');
             const carteira = require('./JS/Connections/Database/getSaldo');
+            const skinsPrice = require('./JS/Connections/Database/getDJSSkinsPrice');
             steamList = inventorySkins.getInventorySkins(result.items.map(item => item.market_hash_name));
             tradableSkins.getTradableSkins(req.session.user.steamid, steamList, client).then(tradableList => {
                 skinsImages.getSkinsImages(tradableList, client).then(skinImages => {
                     djsInventory.getDjsInventory(req.session.user.steamid, client).then(djsList => {
-                        skinsImages.getSkinsImages(djsList, client).then(djsImages => {
-                            skinsInvestidas.getInvestimentos(djsList, req.session.user.steamid, client).then(investimentoList => {
-                                carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
-                                    res.render('listaskins', {
-                                        user: req.session.user.username,
-                                        steamList: steamList,
-                                        tradableList: tradableList,
-                                        skinImages: skinImages,
-                                        djsList: djsList,
-                                        djsImages: djsImages,
-                                        investimentoList: investimentoList,
-                                        saldo: saldo
+                        skinsPrice.getDJSSkinsPrice(req.session.user.steamid, client).then(skinsPrice =>{
+                            skinsImages.getSkinsImages(djsList, client).then(djsImages => {
+                                skinsInvestidas.getInvestimentos(djsList, req.session.user.steamid, client).then(investimentoList => {
+                                    carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
+                                        res.render('listaskins', {
+                                            user: req.session.user.username,
+                                            steamList: steamList,
+                                            tradableList: tradableList,
+                                            skinImages: skinImages,
+                                            djsList: djsList,
+                                            skinsPrice: skinsPrice,
+                                            djsImages: djsImages,
+                                            investimentoList: investimentoList,
+                                            saldo: saldo
+                                        });
                                     });
                                 });
                             });

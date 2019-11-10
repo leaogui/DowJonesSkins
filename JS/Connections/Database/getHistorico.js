@@ -1,7 +1,5 @@
 async function getHistorico (steamid, client) {
 
-    const arrayCleaner = require('../../scripts/arrayCleaner');
-
     const queryVendeu = {
         text: 'SELECT username, nome, foto, r.preco, dtvenda FROM usuario INNER JOIN (SELECT compradorid, vendedorid, nome, foto, h.preco, dtvenda FROM historicovendas h INNER JOIN skin s on  s.skinid = h.skinid) r ON steamid = compradorid WHERE vendedorid = ($1) ORDER BY dtvenda DESC;',
         rowMode: 'array'

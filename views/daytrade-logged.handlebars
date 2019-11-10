@@ -51,7 +51,7 @@
                         {{#each myList}}
                         <figure>
                             <img src={{lookup ../myImages @index}}>
-                            <figcaption>{{this}}</figcaption>
+                            <figcaption>{{this}} - R${{lookup ../myPrice @index}}</figcaption>
                         </figure>
                         {{#if (lookup ../dataList @index)}}
                         <button class="button is-primary" onclick="retirarInvestimento('{{this}}')">Retirar
