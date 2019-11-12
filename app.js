@@ -143,17 +143,6 @@ app.get('/daytrade', (req, res) => {
     }
 });
 
-app.get('/fairtrade', (req, res) => {
-    if (!req.session.user) {
-        res.redirect('/login');
-    } else {
-        const carteira = require('./JS/Connections/Database/getSaldo');
-        carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
-            res.render('fairtrade', { saldo: saldo });
-        });
-    }
-});
-
 app.get('/perfil', (req, res) => {
     if (!req.session.user) {
         res.redirect('/login');
