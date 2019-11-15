@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/leaogui/DowJonesSkins#readme",
   "dependencies": {
+    "assert": "^2.0.0",
     "bluebird": "^3.5.5",
     "connect-flash": "^0.1.1",
     "express": "^4.17.1",
@@ -30,6 +31,7 @@
     "node-static": "^0.7.11",
     "openid": "^2.0.6",
     "pg": "^7.12.1",
+    "puppeteer": "^2.0.0",
     "request-promise": "^4.2.4",
     "sequelize": "^5.18.2",
     "steam-inventory-api": "^2.0.10",
