@@ -11,7 +11,7 @@ async function signUp(client, json){
     if (count == 0){
 
         const insert = {
-            text: 'INSERT INTO Usuario VALUES(($1), ($2), ($3), ($4), ($5), ($6));',
+            text: 'INSERT INTO Usuario VALUES(($1), ($2), ($3), ($4), ($5), ($6), 0);',
             rowMode: 'array'
         };
 
