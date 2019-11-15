@@ -2,10 +2,10 @@
   "name": "package",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "jest",
-    "static": "jshint app.js ./JS ",
+    "static": "jshint app.js ./JS",
     "start": "node app.js"
   },
   "repository": {
@@ -25,7 +25,7 @@
     "express-handlebars": "^3.1.0",
     "express-session": "^1.16.2",
     "jest": "^24.9.0",
-    "jshint": "^2.10.2",
+    "jshint": "^2.10.3",
     "mysql2": "^1.7.0",
     "node-static": "^0.7.11",
     "openid": "^2.0.6",

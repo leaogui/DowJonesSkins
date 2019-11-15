@@ -1,3 +1,4 @@
+/* jshint esversion:8 */
 async function depositarCarteira (steamid, client){
 
     const arrayCleaner = require('../../scripts/arrayCleaner');

@@ -1,3 +1,4 @@
+/* jshint esversion:8 */
 async function retirarInvestimento (client, skin , steamId){
 
     const arrayCleaner = require('../../scripts/arrayCleaner');
@@ -5,16 +6,16 @@ async function retirarInvestimento (client, skin , steamId){
     const query1 = {
         text: 'SELECT skinid, preco FROM skin WHERE nome = ($1)',
         rowMode: 'array'
-    }
+    };
     const query2 = {
         text: 'UPDATE inventario set investida = false WHERE steamid = ($1) AND skinid = ($2)',
         rowMode: 'array'
-    }
+    };
 
     const query3 = {
         text: 'UPDATE skin set preco = ($1) WHERE skinid = ($2)',
         rowMode: 'array'
-    }
+    };
 
     var res1 = await client.query(query1, [skin]);
     var skinInfo = arrayCleaner.arrayCleaner(res1.rows[0]);

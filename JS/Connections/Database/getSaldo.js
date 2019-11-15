@@ -1,3 +1,4 @@
+/* jshint esversion:8 */
 async function getSaldo(steamid, client){
 
     const arrayCleaner = require('../../scripts/arrayCleaner');
@@ -5,7 +6,7 @@ async function getSaldo(steamid, client){
     const query = {
         text: 'SELECT saldo FROM usuario WHERE steamid = ($1);',
         rowMode: 'array'
-    }
+    };
     
     var res = await client.query(query, [steamid]);
 

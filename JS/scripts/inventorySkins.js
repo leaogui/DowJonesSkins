@@ -1,3 +1,4 @@
+/* jshint esversion:8 */
 function getInventorySkins(skinList){
     var filtrado = [];
     skinList.forEach((element) => {

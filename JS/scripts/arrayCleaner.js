@@ -1,3 +1,4 @@
+/* jshint esversion:8 */
 function arrayCleaner(array){
     var cleaned = [];
     array.forEach((element) => {

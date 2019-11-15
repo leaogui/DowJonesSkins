@@ -1,9 +1,10 @@
+/* jshint esversion:8 */
 async function getDJSSkinsPrice(steamid, client){
 
     const query = {
         text: 'SELECT preco FROM skin s INNER JOIN inventario i ON s.skinid = i.skinid WHERE steamid = ($1) ORDER BY nome;',
         rowMode: 'array'
-    }
+    };
     
     var res = await client.query(query, [steamid]);
     resultado = res.rows;

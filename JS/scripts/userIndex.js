@@ -1,3 +1,4 @@
+/* jshint esversion:8 */
 import { getCookie } from './getCookie.js';
 
 function userIndex(){
@@ -7,6 +8,6 @@ function userIndex(){
   if (avatar != null){
     avatar.src = json.avatar.large;
   }
-};
+}
 
 userIndex();

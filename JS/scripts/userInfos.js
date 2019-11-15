@@ -1,3 +1,4 @@
+/* jshint esversion:8 */
 import { getCookie } from './getCookie.js';
 
 function userInfos(){
@@ -14,6 +15,6 @@ function userInfos(){
   if (userName != null){
     userName.innerHTML  = json.username;
   }
-};
+}
 
 userInfos();

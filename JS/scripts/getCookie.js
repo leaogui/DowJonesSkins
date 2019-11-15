@@ -1,3 +1,4 @@
+/* jshint esversion:6 */
 export function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -12,4 +13,4 @@ export function getCookie(cname) {
       }
     }
     return "";
-};
+}

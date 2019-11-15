@@ -1,13 +1,14 @@
+/* jshint esversion:8 */
 async function getInvestimentos(djsSkins, steamid, client){
     const query1 = {
         text: 'SELECT skinid FROM skin WHERE nome = ANY ($1) ORDER BY nome;',
         rowMode: 'array'
-    }
+    };
 
     const query2 = {
         text: 'SELECT investida FROM inventario i INNER JOIN skin s on i.skinid = s.skinid WHERE i.skinid = ANY ($1) AND steamid = ($2) ORDER BY nome;',
         rowMode: 'array'
-    }
+    };
     
     var res = await client.query(query1, [djsSkins]);
     resultado1 = res.rows;

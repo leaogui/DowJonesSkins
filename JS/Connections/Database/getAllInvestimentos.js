@@ -1,9 +1,10 @@
+/* jshint esversion:8 */
 async function getAllInvestimentos(steamid, client){
 
     const query = {
         text: 'SELECT DISTINCT nome FROM skin s INNER JOIN inventario i ON s.skinid = i.skinid WHERE steamid <> ($1) and investida = true ORDER BY nome;',
         rowMode: 'array'
-    }
+    };
     
     var res = await client.query(query, [steamid]);
     resultado = res.rows;

@@ -1,8 +1,9 @@
+/* jshint esversion:8 */
 async function getSkinsImages(tradableSkins, client){
     const query = {
         text: 'SELECT foto FROM skin WHERE nome = ($1);',
         rowMode: 'array'
-    }
+    };
     
 
     var skinsImages = [];

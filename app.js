@@ -50,14 +50,14 @@ inventoryApi.init({
 
 const contextid = 2;
 const appid = 730;
-const count = 5000
+const count = 5000;
 const start_assetid = 730;
 const language = 'pt-BR';
 const tradable = true;
 
 // Configurando sessões
 const SESS_LIFETIME = 1000 * 60 * 60 * 2;
-const SESS_NAME = 'steamUser'
+const SESS_NAME = 'steamUser';
 app.use(session({
     name: SESS_NAME,
     secret: 'djw',
@@ -74,6 +74,9 @@ app.use(function (req, res, next) {
     res.locals.session = req.session;
     next();
 });
+
+// importar constants PopUp
+const popUp = require('./popUpConsts');
 
 // definindo rotas
 app.get('/', (req, res) => {
@@ -222,9 +225,9 @@ app.get('/depositar', (req, res) => {
         res.redirect('/login');
     } else {
         const depositSkin = require('./JS/Connections/Database/depositSkin');
-        depositSkin.depositSkin(client, req.query.skin, req.session.user.steamid).then((result) => {
-            res.redirect('listaskins');
-        });
+        depositSkin.depositSkin(client, req.query.skin, req.session.user.steamid).then(
+            res.render('listaskins', {popUp: popUp.popUpDepositarSkin})
+        );
     }
 });
 
@@ -233,7 +236,9 @@ app.get('/retirar', (req, res) => {
         res.redirect('/login');
     } else {
         const retirarSkin = require('./JS/Connections/Database/retirarSkin');
-        retirarSkin.retirarSkin(client, req.query.skin, req.session.user.steamid).then(res.redirect('listaskins'));
+        retirarSkin.retirarSkin(client, req.query.skin, req.session.user.steamid).then(
+            res.render('listaskins', {popUp: popUp.popUpSacarSkin})
+        );
     }
 });
 
@@ -242,7 +247,9 @@ app.get('/investir', (req, res) => {
         res.redirect('/login');
     } else {
         const investirSkin = require('./JS/Connections/Database/investirSkin');
-        investirSkin.investirSkin(client, req.query.skin, req.session.user.steamid).then(res.redirect('listaskins'));
+        investirSkin.investirSkin(client, req.query.skin, req.session.user.steamid).then(
+            res.render('listaskins', {popUp: popUp.popUpInvestimento})
+        );
     }
 });
 
@@ -251,7 +258,9 @@ app.get('/retirarInvestimento', (req, res) => {
         res.redirect('/login');
     } else {
         const retirarInvestimento = require('./JS/Connections/Database/retirarInvestimento');
-        retirarInvestimento.retirarInvestimento(client, req.query.skin, req.session.user.steamid).then(res.redirect('/daytrade'));
+        retirarInvestimento.retirarInvestimento(client, req.query.skin, req.session.user.steamid).then(
+            res.render('daytrade-logged', {popUp: popUp.popUpRetirarInvestimento})
+        );
     }
 });
 
@@ -260,7 +269,12 @@ app.get('/comprarSkin', (req, res) => {
         res.redirect('/login');
     } else {
         const comprarSkin = require('./JS/Connections/Database/comprarSkin');
-        comprarSkin.comprarSkin(client, req.query.skin, req.session.user.steamid).then(res.redirect('/daytrade'));
+        comprarSkin.comprarSkin(client, req.query.skin, req.session.user.steamid).then((result) =>{
+            if (result == true)
+                res.render('daytrade-logged', {popUp: popUp.popUpCompraGreen});
+            else
+                res.render('daytrade-logged', {popUp: popUp.popUpCompraRed});
+        });
     }
 });
 
@@ -269,7 +283,9 @@ app.get('/depositar-carteira', (req, res) => {
         res.redirect('/login');
     } else {
         const depositarCarteira = require('./JS/Connections/Database/depositarCarteira');
-        depositarCarteira.depositarCarteira(req.session.user.steamid, client).then(res.redirect('/gerenciador-carteira'));
+        depositarCarteira.depositarCarteira(req.session.user.steamid, client).then(
+            res.render('carteira', {popUp: popUp.popUpDeposito})
+        );
     }
 });
 
@@ -278,7 +294,12 @@ app.get('/sacar-carteira', (req, res) => {
         res.redirect('/login');
     } else {
         const sacarCarteira = require('./JS/Connections/Database/sacarCarteira');
-        sacarCarteira.sacarCarteira(req.query.qtd, req.session.user.steamid, client).then(res.redirect('/gerenciador-carteira'));
+        sacarCarteira.sacarCarteira(req.query.qtd, req.session.user.steamid, client).then((result) =>{
+            if (result == true)
+                res.render('carteira', {popUp: popUp.popUpSaqueGreen});
+            else
+                res.render('carteira', {popUp: popUp.popUpSaqueRed});
+        });
     }
 });
 
