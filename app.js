@@ -12,7 +12,6 @@ app.set('view engine', 'handlebars');
 const session = require('express-session');
 
 // definindo path dos arquivos
-const path = require('path');
 app.use(express.static(__dirname));
 
 // Definindo porta de conexão

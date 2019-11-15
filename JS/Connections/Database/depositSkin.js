@@ -1,5 +1,8 @@
 /* jshint esversion:8 */
 async function depositSkin (client, skin , steamId){
+
+    const arrayCleaner = require('../../scripts/arrayCleaner');
+
     const query1 = {
         text: 'SELECT skinid FROM skin WHERE nome = ($1)',
         rowMode: 'array'
@@ -9,13 +12,8 @@ async function depositSkin (client, skin , steamId){
         rowMode: 'array'
     };
     var res1 = await client.query(query1, [skin]);
-    var skinid = res1.rows[0];
-    skinid = JSON.stringify(skinid);
-    skinid = skinid.replace('"', '');
-    skinid = skinid.replace('"', '');
-    skinid = skinid.replace('[', '');
-    skinid = skinid.replace(']', '');
-    await client.query(query2, [steamId, skinid]);
+    var skinid = arrayCleaner.arrayCleaner(res1.rows);
+    await client.query(query2, [steamId, skinid[0]]);
 }
 
 module.exports.depositSkin = depositSkin;

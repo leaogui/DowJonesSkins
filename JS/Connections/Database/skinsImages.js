@@ -1,5 +1,8 @@
 /* jshint esversion:8 */
 async function getSkinsImages(tradableSkins, client){
+
+    const arrayCleaner = require('../../scripts/arrayCleaner');
+
     const query = {
         text: 'SELECT foto FROM skin WHERE nome = ($1);',
         rowMode: 'array'
@@ -11,17 +14,8 @@ async function getSkinsImages(tradableSkins, client){
         var res = await client.query(query, [tradableSkins[i]]);
         skinsImages = skinsImages.concat(res.rows);
     }
-    
-    var filtrado = [];
-    skinsImages.forEach((element) => {
-        element = JSON.stringify(element);
-        element = element.replace('"', '');
-        element = element.replace('"', '');
-        element = element.replace('[', '');
-        element = element.replace(']', '');
-        filtrado.push(element);
-    });
-    return filtrado;
+
+    return arrayCleaner.arrayCleaner(skinsImages);
 }
 
 module.exports.getSkinsImages = getSkinsImages;
