@@ -1,5 +1,0 @@
-Puxar do banco de dados informações de skins e usuários
-Colocar cada foto das armas para aparecer no daytrade/fairtrade
-Puxar as informações do json da steam
-Fazer todos os testes funcionarem com o Travis e todos os frameworks
-Fazer uma espécie de lista das skins que o usuário tem na "loja" pelo perfil dele
