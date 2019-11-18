@@ -1,3 +1,4 @@
+/* jshint esversion:8 */
 const scope = require('../support/scope');
 
 let headless = false;

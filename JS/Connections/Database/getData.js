@@ -14,13 +14,11 @@ async function getData(skins, steamid, client){
     };
     
     var res = await client.query(query1, [skins]);
-    resultado1 = res.rows;
-    var cleaned1 = arrayCleaner.arrayCleaner(resultado1);
+    var cleaned1 = arrayCleaner.arrayCleaner(res.rows);
 
     var res2 = await client.query(query2, [cleaned1, steamid]);
-    resultado2 = res2.rows;
     var cleaned2 = [];
-    resultado2 = arrayCleaner.arrayCleaner(resultado2);
+    var resultado2 = arrayCleaner.arrayCleaner(res2.rows);
     resultado2.forEach((element) => {
         var dia = element.slice(8, 10);
         var mes = element.slice(5, 7);

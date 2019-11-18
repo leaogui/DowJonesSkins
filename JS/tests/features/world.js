@@ -1,3 +1,4 @@
+/* jshint esversion:8 */
 const { setWorldConstructor } = require('cucumber');
 const puppeteer = require('puppeteer');
 const scope = require('./support/scope');
@@ -10,7 +11,7 @@ const World = function(){
 
     scope.map_of_pages = {
         'Index': scope.host + '/index'
-    }
+    };
 };
 
 setWorldConstructor(World);

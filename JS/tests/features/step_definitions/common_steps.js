@@ -1,3 +1,4 @@
+/* jshint esversion:8 */
 const {When, Then} = require('cucumber');
 
 const scope = require('../support/scope');

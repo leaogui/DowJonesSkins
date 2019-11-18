@@ -11,16 +11,13 @@ async function getHistorico (steamid, client) {
         rowMode: 'array'
     };
 
-    var resultadoFinal = [];
     var res1 = await client.query(queryVendeu, [steamid]);
-    resultadoFinal = resultadoFinal.concat(res1.rows);
-    resultadoFinal.forEach((element) =>{
+    res1.rows.forEach((element) =>{
         element.unshift(true);
     });
 
     var res2 = await client.query(queryComprou, [steamid]);
-    resultadoFinal = resultadoFinal.concat(res2.rows);
-    resultadoFinal.forEach((element) =>{
+    res2.rows.forEach((element) =>{
         if(element[0] != true)
             element.unshift(false);
         var data = new Date(element[5]);
@@ -32,7 +29,7 @@ async function getHistorico (steamid, client) {
         element[5] = dia+'/'+(parseInt(data.getMonth())+1)+'/'+data.getFullYear();
     });
     
-    return resultadoFinal;
+    return res1.rows.concat(res2.rows);
 }
 
 module.exports.getHistorico = getHistorico;

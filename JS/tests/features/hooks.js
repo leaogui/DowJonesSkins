@@ -1,3 +1,4 @@
+/* jshint esversion:8 */
 const { After, AfterAll } = require('cucumber');
 const scope = require('./support/scope');
 const app = require("../../../app");

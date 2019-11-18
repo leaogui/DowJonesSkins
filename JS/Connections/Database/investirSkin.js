@@ -8,8 +8,7 @@ async function investirSkin (client, skin, steamId){
         rowMode: 'array'
     };
     const query2 = {
-        text: "UPDATE inventario SET investida = '1', data = ($1) WHERE steamid = ($2) AND skinid = ($3);",
-        rowMode: 'array'
+        text: "UPDATE inventario SET investida = '1', data = ($1) WHERE steamid = ($2) AND skinid = ($3);"
     };
 
     const query3 = {
@@ -18,8 +17,7 @@ async function investirSkin (client, skin, steamId){
     };
 
     const query4 = {
-        text: "UPDATE skin SET preco = ($1) WHERE skinid = ($2);",
-        rowMode: 'array'
+        text: "UPDATE skin SET preco = ($1) WHERE skinid = ($2);"
     };
 
     var res1 = await client.query(query1, [skin]);
