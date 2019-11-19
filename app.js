@@ -90,14 +90,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/index', (req, res) => {
-    if (!req.session.user) {
-        res.render('index');
-    } else {
-        const carteira = require('./JS/Connections/Database/getSaldo');
-        carteira.getSaldo(req.session.user.steamid, client).then((saldo) => {
-            res.render('index-logged', { saldo: saldo });
-        });
-    }
+    res.redirect('/');
 });
 
 app.get('/daytrade', (req, res) => {
