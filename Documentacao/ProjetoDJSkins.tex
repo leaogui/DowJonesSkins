@@ -146,4 +146,135 @@
     Com isso, ao logar no Steam, o sistema consegue capturar todos os itens trocáveis do inventário do usário, 
     além de filtrar para o jogo 'CSGO'.
 
+
+    \section{3$^{\circ}$ Sprint}
+    \subsection{Peronalização via Cookie}
+    A fim personalizar a tela do usuário logado, cookies foram utilizados para 
+    exibir seu avatar e seu username. Para isso, o JSON disponibilizado pela steam logo 
+    após a autenticação do usuário é salvo no cookie e posteriormente resgatado por duas 
+    funções JavaScript encarregadas de resgatar o avatar e o username do user.
+
+    Com isso, o avatar do usuário foi printado na navbar de todas as telas, enquanto logado, enquanto seu nome 
+    aparece na página 'Minha Conta'.
+
+    \subsection{Template Engine Handlebars}
+    Conforme o projeto foi evoluindo, usa complexidade foi aparecendo. Sabendo que seria necessário o retorno 
+    de muita informação do banco de dados para a tela da aplicação, além de muitas regras que resultariam 
+    em manipulação do banco, tornou-se necessária a utilização de um Template Engine, tornando a aplicação 
+    inteiramente back-end. 
+    
+    Diante disso, o ‘Handlebars’ foi instalado no sistema e marcado como template engine. Após isso, todos 
+    os HTMls desenvolvidos até então foram trocados para Handlebars, e as devidas alterações no back-end 
+    foram realizadas.
+    
+    O HBS foi a escolha por conta de sua natureza totalmente virada para o Node.js, o qual foi utilizado 
+    para o back-end inteiro, e por conta de seu fácil aprendizado e resultado que solucionaria os 
+    problemas do projeto.
+
+    \section{4$^{\circ}$ Sprint}
+    \subsection{Mecânica de Depósito e Saque de Skins}
+    A fim de criar a mecânica de deposito e saque de skins, a API ‘steam-inventory’ foi utilizada, 
+    junto a algumas funções próprias.
+    
+    Ao acessar o próprio inventário do DJS, a API ‘steam-inventory’ é utilizada, retornando todas as 
+    skins trocáveis de Counter-Strike: Global Offensive. Com essa informação, o nome de tais skins são 
+    printadas na tela do usuário em uma coluna a esquerda da tela, enquanto apenas as aceitadas pelo site 
+    são printadas na coluna do meio. Na coluna a direita, por sua vez, foi utilizada para printar as 
+    skins já depositadas no site pelo usuário. 
+    
+    Com todas as informações na tela, botões foram adicionados. Na coluna do meio, botões que chamam 
+    uma função para investir a skin clicada foram adicionados, enquanto na coluna a direita, botões 
+    para sacar skin e investir na skin foram adicionados. A coluna a esquerda ficou apenas com nomes 
+    de skins.
+    
+    Os botões chamam funções, que por sua vez, realizam as devias validações e manipulações no banco 
+    de dados, possibilitando assim o mecanismo de deposito e saque.
+    
+    Devido a burocracias com a Steam, não foi possível criar uma conta para realizar as trocas reais 
+    de skins. Com isso, ao depositar uma skin, tal skin não some do inventário real do usuário, 
+    apenas é mapeado para dentro do inventário do DJS. A mesma coisa para o saque, em que a 
+    skin é realmente enviada para a Steam, mas sim apenas retirada do inventário do DJS, 
+    simulando tal troca.
+
+    \subsection{Mecânica de Investimento de Skins}
+    A fim de investir na skin, mecanismo core da aplicação, o botão na ‘Investir’ foi criado 
+    para cada skin no inventário DJS do usuário. Ao clicar no botão, uma função é invocada, 
+    que realiza a confirmação do investimento da skin, marcando a data do investimento.
+    Com a data marcada, o usuário não pode retirar o investimento até bater 31 dias, que 
+    consiste em outro User Story do projeto.
+
+    A fim de simular a flutuação de valores das skins do mercado, ao investir em uma skin, 
+    caso a skin investida é a primeira no sistema inteiro, seu valor aumenta 
+    15\%. Caso contrário, cai 3\%.
+
+    \section{5$^{\circ}$ Sprint}
+    \subsection{Mecânica de Carteira}
+    Após a implementação do deposito, saque e investimento de skins, a mecânica de carteira foi 
+    desenvolvida para possibilitar a compra de skins. Para isso, foi criado uma sessão ‘Carteira’, e 
+    uma coluna ‘saldo’ na tabela ‘usuario’ do Postgresql. 
+    
+    Ao clicar em ‘Depositar’ na sessão de ‘Carteira’, automaticamente R\$15 creditados em seu ‘saldo’, 
+    realizando um UPDATE no banco de dados. Ao informar uma quantia a sacar e clicar em ‘Retirar’, tal 
+    quantia é validada com o saldo. Se o saldo for maior ou igual a quantia, tal valor é debitado do 
+    saldo, realizando outro UPDATE no banco de dados.
+
+    \subsection{Mecânica de Compra de Skins e Histórico de Vendas}
+    Para o mecanismo de compra, foi criado a sessão ‘DayTrade’, em que o usuário 
+    acessará para ver todas as skins investidas no site e seu determinado preço, além 
+    de ver seus próprios investimentos, possibilitando o cancelamento de algum deles, 
+    caso tenham mais de 31 dias.
+    
+    Com isso, ao encontrar um skin que deseja, o usuário clica em ‘Comprar’, e uma função é 
+    chamada para validar a compra. Se a compra for válida, o usuário comprador recebe a skin 
+    do usuário “vendedor” que está a mais tempo com o investimento aberto. Com isso, do saldo do 
+    comprador é debitado o valor da skin, enquanto do saldo do vendedor é creditado tal valor. 
+    
+    Além disso, um histórico de vendas é criado, marcando assim o nome do vendedor/comprador, as 
+    informações da skin comprada e a data da compra. Tal histórico também pode ser visto na tela 
+    ‘DayTrade’.
+
+    \subsection{Testes}
+    Após todos os desenvolvimentos serem concluídos e testados pela equipe, o desenvolvimento de 
+    teste automatizados foram realizados. Para isso, o framework de testes Jest foi utilizado para 
+    o testes unitários e de integração, enquanto o Puppeteer e o Cucumber foram utilizados para os 
+    testes End-To-End. 
+    
+    Ao total, dezesseis testes foram implementados, testando as funcionalidades principais do sistema, 
+    evitando qualquer má manipulação de banco de dados e interferência no mecanismo de valorização de
+     skins do site.
+    
+    Além desses testes, uma ferramenta de análise estática foi utilizada no projeto. Tal ferramenta 
+    foi o ‘jshint’, e serviu como “cleaner” de “code smells”. A análise estática de 100\% ao final 
+    das refatorações requisitadas pela ferramenta.
+
+    \section{User Stories}
+    Eu, enquanto usuário, devo conseguir cadastrar/logar via Steam Account para usufruir das 
+    funcionalidades do site.
+
+    Eu, enquanto usuário, devo conseguir depositar minhas Skins de CSGO do inventário da Steam no 
+    inventário do Site, a fim de investir nelas no site.
+
+    Eu, enquanto usuário, devo conseguir depositar apenas as Skins permitidas pelo site, já que o 
+    site limita as Skins aceitas.
+
+    Eu, enquanto usuário, devo conseguir colocar na bolsa uma Skins do meu inventário do site, para 
+    que ela possa valorizar/desvalorizar com o tempo.
+
+    Eu, enquanto usuário, não posso "sacar" as Skins em investimento no site, apenas as que estão no 
+    meu inventário.
+
+    Eu, enquanto usuário, só poderei retornar uma Skins do investimento para o inventário após 1 mês 
+    de investimento.
+
+    Eu, enquanto usuário, devo conseguir "sacar" as Skins que estão no inventário do site para o meu 
+    inventário Steam, para que possa utilizá-las no jogo e na Steam.
+
+    Eu, enquanto usuário, devo conseguir ver meu histórico de vendas/compras no site, visualizando o 
+    item comprado/vendido, o preço e a data da compra.
+
+    Eu, enquanto usuário, poderei ver a valorização/desvalorização das Skins investidas no site, para 
+    que eu possa saber a hora de comprar e vender.
+
+    Eu, enquanto usuário, devo conseguir comprar Skins investidas no site com dinheiro.
+
 \end{document}
