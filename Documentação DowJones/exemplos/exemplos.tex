@@ -1,0 +1,77 @@
+\chapter{Exemplos \LaTeX}
+
+
+% exemplo de como inserir uma referencia adicional no sumario (normalmente não utilizado em um trabalho academico)
+\addcontentsline{toc}{chapter}{Exemplos que devem ser lidos :-)}
+
+Esse capítulo tem exemplos de escrita utilizando o \LaTeX  utilizando \abnTeX, é muito simples escrever em \textbf{negrito}, \emph{italico}, ....
+
+
+Existem diversos tutoriais para uso de \LaTeX, se você está utilizando esse modelo não precisará se preocupar com muitos dos detalhes técnicos do \LaTeX \space e cuidar somente do seu texto.
+
+Escolha seu editor : \url{https://en.wikipedia.org/wiki/Comparison\_of\_TeX\_editors}
+
+
+\input{exemplos/abnt}
+
+\section{Detalhes textuais}
+
+O documento é dividido em capítulos, e cada capítulo dividido em seções utilizando o \abnTeX \space você pode dividir seus documentos nos níveis a seguir:
+
+\begin{itemize}
+\item chapter (1);
+\item section (1.1);
+\item subsection (1.1.1);
+\item subsubsection (1.1.1.1);
+\item subsubsubsection (1.1.1.1.1).
+\end{itemize}
+
+Tenha em mente que normalmente se utiliza no máximo o nível \emph{subsection}.
+Ao definir as divisões do seu trabalho utilizando as diretivas do \LaTeX, elas são automaticamente inseridas no sumário do documento.
+
+
+\subsection{Caracteres Reservados}
+
+
+
+Alguns caracteres são reservados no \LaTeX \space e por isso para utilizar esses caracteres é necessario utilizar uma forma diferenciada de escrita. É possivel utilizar a macro \emph{symbol} com o codigo ascii do caracter desejado.
+\begin{itemize}
+\item barra invertida : \textbackslash   \symbol{92}    $\backslash$;
+\item til  :  \symbol{126} ;
+\item cifrão : \$;
+\item sublinhado, \emph{underscore}, \emph{underline} : \_;
+\item chaves : \} \{.
+\end{itemize}
+
+\input{exemplos/referencias}
+
+
+\subsection{Listas}
+
+Em uma lista de itens cada item deve ser terminado por ponto e virgula, exceto o ultimo item que deve ter um ponto final.
+
+\begin{itemize}
+\item item 1;
+\item item 2;
+\item item ..;
+\item item final.
+\end{itemize}
+
+\subsection{Elementos não textuais}
+
+Elementos não textuais são aqueles que auxiliam o entendimento, não podem ficar "jogados" no texto, devem ser citados, cada elemento deve ser identificado por um \emph{label} único que permite a sua referencia, no texto utilizando \emph{ref} ou \emph{autoref}, esses elementos quando definidos corretamente também são inseridos nas listas presentes antes do sumário.
+
+Lembre que o \LaTeX \  vai posicionar os elementos  da melhor maneira possível dentro do documento, sempre faça as referencias utilizando os comandos específicos, nunca utiliza "acima", "baixo", "a seguir", etc...
+
+O posicionamento desses elementos é feito pelas rotinas do pacote float, leia a documentação em  \url{http://linorg.usp.br/CTAN/macros/latex/contrib/float/float.pdf}. A opção H deverá ser utilizada somente como ultima alternativa de posicionamento.
+
+
+
+
+
+\input{exemplos/tabelas}
+\input{exemplos/figuras}
+\input{exemplos/todo}
+\input{exemplos/qrcode}
+\input{exemplos/exemploA3}
+

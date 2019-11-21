@@ -1,0 +1,253 @@
+%% Adaptado a partir de :
+%%    abtex2-modelo-trabalho-academico.tex, v-1.9.2 laurocesar
+%% para ser um modelo para os trabalhos no IFSP-SPO
+
+\documentclass[
+    % -- opções da classe memoir --
+    12pt,               % tamanho da fonte
+    openright,          % capítulos começam em pág ímpar (insere página vazia caso preciso)
+    %twoside,            % para impressão em verso e anverso. Oposto a oneside
+    oneside,
+    a4paper,            % tamanho do papel. 
+    % -- opções da classe abntex2 --schwinn
+    % Opções que não devem ser utilizadas na versão final do documento
+    %draft,              % para compilar mais rápido, remover na versão final
+    MODELO,             % indica que é um documento modelo então precisa dos geradores de texto
+    TODO,               % indica que deve apresentar lista de pendencias 
+    % -- opções do pacote babel --
+    english,            % idioma adicional para hifenização
+    brazil              % o último idioma é o principal do documento
+    ]{ifsp-spo-inf-ctds} % ajustar de acordo com o modelo desejado para o curso
+
+% ---
+% Pacotes básicos 
+% ---
+%\usepackage[utf8]{inputenc}     % Codificacao do documento (conversão automática dos acentos)
+% ---
+
+%\usepackage{style}
+        
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES ADICIONAIS UTEIS
+% --- 
+
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{DowJonesSkins}
+
+% Trabalho individual
+%\autor{AUTOR DO TRABALHO}
+
+% Trabalho em Equipe
+% ver também https://github.com/abntex/abntex2/wiki/FAQ#como-adicionar-mais-de-um-autor-ao-meu-projeto
+\renewcommand{\imprimirautor}{
+\begin{tabular}{lr}
+Andrey Camargo Lacerda &  SP3013049 \\
+Fabricio Ernesto dos Santos & SP3013171 \\
+Guilherme Oliveira de Souza Leão & SP3013243 \\
+Luis Antonio Gonçalves Novaes Angelim & SP301309X \\
+Vitor Urdilai &  SP3013111 \\
+\end{tabular}
+}
+
+
+\disciplina{DW2A4 - Desemvolvimento Web II}
+%\disciplina{MTPA4 - Metodologia da Pesquisa Científica}
+%\disciplina{ES4A4 - Engenharia de Software IV}
+
+%\preambulo{Modelo canônico de trabalho monográfico acadêmico em conformidade com
+%as normas ABNT apresentado à comunidade de usuários \LaTeX.}
+
+\data{22 de Novembro de 2019}
+
+% Definir o que for necessário e comentar o que não for necessário
+% Utilizar o Nome Completo, abntex tem orientador e coorientador
+% então vão ser utilizados na definição de professor
+\renewcommand{\orientadorname}{Professor:}
+\orientador{Luis Fernando Aires Branco Menegueti}
+\renewcommand{\coorientadorname}{Professor:}
+\coorientador{Daniel Marques Gomes de Morais}
+
+
+% ---
+
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+        %pagebackref=true,
+        pdftitle={\@title}, 
+        pdfauthor={\@author},
+        pdfsubject={\imprimirpreambulo},
+        pdfcreator={LaTeX with abnTeX2 using IFSP model},
+        pdfkeywords={abnt}{latex}{abntex}{abntex2}{IFSP}{\ifspprefixo}{trabalho acadêmico}, 
+        colorlinks=true,            % false: boxed links; true: colored links
+        linkcolor=blue,             % color of internal links
+        citecolor=blue,             % color of links to bibliography
+        filecolor=magenta,              % color of file links
+        urlcolor=blue,
+        bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+%\frenchspacing 
+
+%somente para o exemplo, fica primeiro
+%\input{00-info}
+
+% -- lista de pendencias gerada pelo todonotes
+% -- altere opções do usepackage para remover na versão final....
+%\listoftodos
+\todo
+\newpage
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+%\pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+
+\newcounter{todocounter}
+\newcommand{\todonum}[2][]
+{\stepcounter{todocounter}\todo[#1]{\thetodocounter: #2}}
+
+
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto
+%\imprimirfolhaderosto*
+% ---
+
+% Quando registrado na biblioteca
+%\input{pre-fichacatalografica}
+
+%Caso necessário
+%\input{pre-errata}
+
+%Obrigatório para trabalhos com bancas oficiais
+%\input{pre-aprovacao}
+
+% ---- opcionais 
+%\input{pre-dedicatoria}
+%\input{pre-agradecimentos}
+%\input{pre-epigrafe}
+
+% -- resumo obrigatório
+\input{pre-resumos}
+
+
+% ---
+% inserir lista de ilustrações
+% ---
+%\pdfbookmark[0]{\listfigurename}{lof}
+%\listoffigures*
+%\cleardoublepage
+% ---
+
+
+% ---
+% inserir lista de tabelas
+% ---
+%\pdfbookmark[0]{\listtablename}{lot}
+%\listoftables*
+%\cleardoublepage
+% ---
+
+% ---
+% inserir lista de quadros
+% ---
+%\pdfbookmark[0]{\listofquadrosname}{loq}
+%\listofquadros*
+%\cleardoublepage
+% ---
+
+%\input{pre-siglas}
+
+%\input{pre-simbolos}
+%\todo[inline]{Remover lista de simbolos se não for necessário}
+
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+\input{textos-introducao}
+%\input{textos-revisao-literatura}
+
+
+\input{Diagramas}
+
+% Para facilitar a manutenção é sempre melhore criar um arquivo por capitulo, para exemplo isso não é necessário 
+\input{textos-desenvolvimento}
+% exemplos de escrita LaTeX
+%\input{exemplos/exemplos}
+
+
+
+\input{textos-conclusao}
+
+% ----------------------------------------------------------
+% Finaliza a parte no bookmark do PDF
+% para que se inicie o bookmark na raiz
+% e adiciona espaço de parte no Sumário
+% ----------------------------------------------------------
+\phantompart
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\input{exemplos/referencias}
+
+%\input{pos-glossario.tex}
+
+%\input{pos-apendices}
+%\input{pos-anexos}
+
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO - Quando necessário 
+% As palavras indexadas devem ser definidas com \index{} no texto
+%---------------------------------------------------------------------
+\phantompart
+\printindex
+%\todonum[inline]{remover indice remissivo se não for necessário}
+
+%---------------------------------------------------------------------
+
+\end{document}

@@ -1,0 +1,37 @@
+
+% Definições para glossario
+
+% ATENCAO o SHARELATEX GERA O GLOSSARIO/LISTAS DE SIGLAS SOMENTE UMA VEZ
+% CASO SEJA FEITA ALGUMA ALTERAÇÃO NA LISTA DE SIGLAS OU GLOSSARIO É NECESSARIO UTILIZAR A OPÇÃO :
+% "Clear Cached Files" DISPONIVEL NA VISUALIZAÇÃO DOS LOGS 
+% ---
+% https://www.sharelatex.com/learn/Glossaries
+
+
+\newglossaryentry{pai}{
+                name={pai},
+                plural={pai},
+                description={este é uma entrada pai, que possui outras
+                subentradas.} }
+
+ \newglossaryentry{componente}{
+                name={componente},
+                plural={componentes},
+                parent=pai,
+                description={descriação da entrada componente.} }
+ 
+ \newglossaryentry{filho}{
+                name={filho},
+                plural={filhos},
+                parent=pai,
+                description={isto é uma entrada filha da entrada de nome
+                \gls{pai}. Trata-se de uma entrada irmã da entrada
+                \gls{componente}.} }
+
+\newglossaryentry{tag} {
+    name=tag,
+    plural= {tags},
+    description={Um marcador, a palavra em inglês significa etiqueta}
+}
+                
+% Normalmente somente as palavras referenciadas são impressas no glossario, portanto é necessário referenciar utilizando \gls{identificação}                
