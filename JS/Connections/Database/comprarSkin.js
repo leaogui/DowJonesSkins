@@ -46,6 +46,10 @@ async function comprarSkin (client, skin, steamId){
 
         var valor = parseFloat(saldo[0]) - parseFloat(skinInfo[1]);
         await client.query(query6, [valor.toFixed(2), steamId]);
+        var resOwner = await client.query(query1, [steamId]);
+        var saldoOwner = arrayCleaner.arrayCleaner(resOwner.rows[0]);
+        var valorOwner = parseFloat(saldoOwner[0]) + parseFloat(skinInfo[1]);
+        await client.query(query6, [valorOwner.toFixed(2), steamIdOwner[0]]);
 
         var res3 = await client.query(query3, [steamId, skinInfo[0]]);
         var steamIdOwner = arrayCleaner.arrayCleaner(res3.rows[0]);

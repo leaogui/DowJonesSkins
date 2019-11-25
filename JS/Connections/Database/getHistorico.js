@@ -17,7 +17,8 @@ async function getHistorico (steamid, client) {
     });
 
     var res2 = await client.query(queryComprou, [steamid]);
-    res2.rows.forEach((element) =>{
+    var resTotal = res1.rows.concat(res2.rows);
+    resTotal.forEach((element) =>{
         if(element[0] != true)
             element.unshift(false);
         var data = new Date(element[5]);
@@ -29,7 +30,7 @@ async function getHistorico (steamid, client) {
         element[5] = dia+'/'+(parseInt(data.getMonth())+1)+'/'+data.getFullYear();
     });
     
-    return res1.rows.concat(res2.rows);
+    return resTotal;
 }
 
 module.exports.getHistorico = getHistorico;
