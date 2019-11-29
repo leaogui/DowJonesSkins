@@ -16,7 +16,7 @@
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase {Desenvolvimento do Projeto}}{11}{chapter.4}%
 \contentsline {section}{\numberline {4.1}User Stories}{11}{section.4.1}%
-\contentsline {section}{\numberline {4.2}1$^{\circ }$ Sprint}{11}{section.4.2}%
+\contentsline {section}{\numberline {4.2}1$^{\circ }$ Sprint}{12}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Criação do Repositório no Git}{12}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Instalação dos Frameworks}{12}{subsection.4.2.2}%
 \contentsline {subsection}{\numberline {4.2.3}Criação e configuração do Heroku}{13}{subsection.4.2.3}%
@@ -35,17 +35,16 @@
 \contentsline {subsection}{\numberline {4.5.2}Mecânica de Investimento de Skins}{18}{subsection.4.5.2}%
 \contentsline {section}{\numberline {4.6}5$^{\circ }$ Sprint}{18}{section.4.6}%
 \contentsline {subsection}{\numberline {4.6.1}Mecânica de Carteira}{18}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Mecânica de Compra de Skins e Histórico de Vendas}{18}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.2}Mecânica de Compra de Skins e Histórico de Vendas}{19}{subsection.4.6.2}%
 \contentsline {subsection}{\numberline {4.6.3}Testes}{19}{subsection.4.6.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {Diagramas}}{20}{chapter.5}%
-\contentsline {subsection}{\numberline {5.0.1}Banco de Dados}{20}{subsection.5.0.1}%
-\contentsline {subsection}{\numberline {5.0.2}Casos de uso}{21}{subsection.5.0.2}%
-\contentsline {subsection}{\numberline {5.0.3}Diagramas de Atividade}{23}{subsection.5.0.3}%
+\contentsline {section}{\numberline {5.1}Banco de Dados}{20}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Diagramas de Atividade}{22}{section.5.2}%
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{Conclusão}{26}{chapter*.6}%
+\contentsline {chapter}{Conclusão}{25}{chapter*.6}%
 \vspace {\cftbeforechapterskip }
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{Referências}{27}{chapter*.9}%
+\contentsline {chapter}{Referências}{26}{chapter*.9}%
 \vspace {\cftbeforechapterskip }

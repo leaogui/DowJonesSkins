@@ -3,6 +3,7 @@
 %---------------------------------------------------------------------------------------
 
 \chapter[Desenvolvimento do Projeto]{Desenvolvimento do Projeto}
+Neste capítulo, o desenvolvimento projeto será explicitado e comentado. Por conta a metodologia de desenvolvimento ágil escolhida, cada Sprint possui uma seção no documento, contendo o que foi realizado nela.
 
 \section{User Stories}
 Como descrição das necessidades dos usuários desta aplicação, servindo como casos de uso + requisitos funcionais, as seguintes User Storie foram discutidas e, ao longo do projeto, implementadas:
@@ -38,6 +39,8 @@ que eu possa saber a hora de comprar e vender.
 \item Eu, enquanto usuário, devo conseguir comprar Skins investidas no site com dinheiro.
 \end{itemize}
 
+Para maiores detalhes, os cenários de cada User Story foram levantados e anexados ao Apêndice A.
+
 \section{1$^{\circ}$ Sprint}
 O primeiro sprint consistiu na preparação do repositório do projeto, com a instalação dos seguintes
 FrameWorks: Code Climate, Cucumber, Jest, Travis CI. Além da configuração dessas ferramentas,
@@ -47,12 +50,13 @@ foi criado o projeto no PivotalTracker, a fim de inserirmos as User Stories.
 
 \subsection{Criação do Repositório no Git}
 O primeiro passo tomado pela equipe foi a criação do repositório no Git. Para isso, o integrantes
-Guilherme Leão criou o repositório no GitHub, e posteriormente adicionou todos os membros
+Guilherme Leão criou o repositório no GitHub, como mostra a figura~\ref{fig:github}, e posteriormente adicionou todos os membros
 da equipe e o professor de ES4A4, Daniel Morais.\\
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.6]{Imagens/Repositorio.png}
 	\caption{Repositório do Projeto no GitHub}
+	\label{fig:github}
 \end{figure}
 
 \subsection{Instalação dos Frameworks}
@@ -75,18 +79,19 @@ Após isso, o dono do repositório instalou o Travis CI pelo próprio 'GitHub Ma
 
 \subsection{Criação e configuração do Heroku}
 Para a criação do app no Heroku, o Heroku CLI foi instalado. Com ele instalado, o comando
-'heroku create' foi executado via CMD, criando o app no Heroku. Após criar o Heroku App, o deploy do Heroku foi configurado
+'heroku create' foi executado via CMD, criando o app no Heroku, como mostra a figura~\ref{fig:heroku}. Após criar o Heroku App, o deploy do Heroku foi configurado
 para que ele seja sincronizado com o 'push' para o repositório no GitHub.\\
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.5]{Imagens/Heroku.png}
 	\caption{App do Projeto no Heroku}
+	\label{fig:heroku}
 \end{figure}
 
 \subsection{Home.html + app.js}
 Para criar o esboço da Home do projeto, o HTML5 foi utilizado. Para estilização, o Bulma foi explorando,
 que consiste num FrameWork de CSS. Cada arquivo foi separado em pastas baseadas em suas extensões. 
-Diante disso, uma pasta HTMl, uma CSS e uma JS foram criadas. Na pasta CSS, o .min.css do Bulma foi salvo, para que fosse possível utilizá-lo.
+Diante disso, uma pasta HTMl, uma CSS e uma JS foram criadas. Na pasta CSS, o .min.css do Bulma foi salvo, para que fosse possível utilizá-lo. A figura~\ref{fig:home} mostra o estado final da construção da primeira 'Home' da aplicação.
 
 Com a Home criada, o próximo passo foi o primeiro contato com o login via Steam. Para isso, a API
 da Steam para Node.JS foi utilizada. No arquivos app.js, que consiste no arquivo 'main', todas as rotas foram criadas
@@ -101,20 +106,22 @@ dentro da pasta 'JS'.\\
 	\centering
 	\includegraphics[scale=0.5]{Imagens/Home.png}
 	\caption{Esboço da Home pronto}
+	\label{fig:home}
 \end{figure}
 
 \subsection{Engenharia de Software}
-No PivotalTracker criado pelo professor Daniel, as primeiras User Stories foram inseridas. Essas Stories consistem 
+No Pivotal Tracker criado pelo professor Daniel, as primeiras User Stories foram inseridas. Essas Stories consistem 
 nas principais funcionalidades de usuários identificadas pelo grupo e divididas até então. Após a inserção, 
 Uma pontuação foi atribuída para cada uma, a partir de um debate, onde o integrante que deu a menor nota defendia seu argumento 
 junto ao integrante de deu a maior nota. O melhor argumento decide a nota.
 
-Após isso, a prioridade e dependencias de cada User Story foi organizada, além de lançar algumas Users Stories no IceBox\\
+Após isso, a prioridade e dependencias de cada User Story foi organizada, além de lançar algumas Users Stories no IceBox, fechando a primeira organização do Pivotal Tracker, como pode ser vista na figura~\ref{fig:pivotal}.\\
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[scale=0.4]{Imagens/Pivotal1.png}
 	\caption{PivotalTracker no 1$^{\circ}$ Sprint}
+	\label{fig:pivotal}
 \end{figure}
 
 \section{2$^{\circ}$ Sprint}

@@ -1,64 +1,46 @@
 \chapter[Diagramas]{Diagramas}
 Durante o desenvolvimento do projeto, alguns diagramas foram elaborados para sincronização de pensamento da equipe e entendimento coletivo.
 
-Dentre os diagramas construídos, dois consistem no banco de dados, para entendimento da conexão entre as classes (Figura 5 e 6), enquanto sete consistem na aplicação (Figura 7, 8, 9, 10, 11, 12 e 13), para entendimento de suas mecânicas, da interação do usuário com o sistema, e do funcionamento interno. Os diagramas utilizados para a aplicação foram o casos de uso e diagrama de atividades.
+Dentre os diagramas construídos, dois consistem no banco de dados, para entendimento da conexão entre as entidades do sistema, sendo um deles Diagrama de Entidade-Relacionamento, que consiste na figura~\ref{fig:der}, enquanto o outro consiste no Diagrama do Modelo Lógico do banco de dados da aplicação, representado na figura~\ref{fig:bdml}.
 
-Os diagramas elaborados foram:
+Além desses dois diagramas, três Diagramas de Atividade foram construídos para auxiliar no alinhamento de ideias do grupo e entendimento das funcionalidades. O diagrama representado na figura~\ref{fig:dami} consiste no funcionamento do mecanismo de inventário do projeto, enquanto a figura~\ref{fig:damdt} representa o funcionamento da mecânica de Day Trade e a figura~\ref{fig:damc} representa o sistema de carteira da aplicação.
 
- \subsection{Banco de Dados}
+Como forma organização, separamos os diagramas em dois grupos, representados pelas seções a seguir.
+
+ \section{Banco de Dados}
 
   \begin{figure}[!htb]
         \centering
         \includegraphics[scale=0.5]{Imagens/Relacionamento.png}
         \caption{Banco de Dados - Diagrama Entidade Relacionamento}
+        \label{fig:der}
  \end{figure}
 
   \begin{figure}[!htb]
         \centering
         \includegraphics[scale=0.6]{Imagens/Logico.png}
         \caption{Banco de Dados - Modelo Lógico}
- \end{figure}
-
-  \begin{figure}[!htb]
- \subsection{Casos de uso}
-        \centering
-        \includegraphics[scale=0.6]{Imagens/login.png}
-        \caption{Caso de Uso - Login do usuário}
- \end{figure}
-
-  \begin{figure}[!htb]
-        \centering
-        \includegraphics[scale=0.6]{Imagens/deposito.png}
-        \caption{Caso de Uso - Depósito de Skins}
- \end{figure}
-
-  \begin{figure}[!htb]
-        \centering
-        \includegraphics[scale=0.6]{Imagens/compra.png}
-        \caption{Caso de Uso - Compra de Skins}
- \end{figure}
-
-  \begin{figure}[!htb]
-        \centering
-        \includegraphics[scale=0.6]{Imagens/carteira.png}
-        \caption{Caso de Uso - Carteira do usuário}
+        \label{fig:bdml}
  \end{figure}
 
 	\begin{figure}[!htb]
-		\subsection{Diagramas de Atividade}
+		\section{Diagramas de Atividade}
 		\centering
 		\includegraphics[scale=0.6]{Imagens/mec-inventario.png}
 		\caption{Diagrama de Atividades - Mecanismo de Inventário}
+		\label{fig:dami}
 	\end{figure}
 
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[scale=0.6]{Imagens/mec-daytrade.png}
 		\caption{Diagrama de Atividades - Mecanismo de Day Trade}
+		\label{fig:damdt}
 	\end{figure}
 
 	\begin{figure}[!htb]
 		\centering
 		\includegraphics[scale=0.6]{Imagens/mec-carteira.png}
 		\caption{Diagrama de Atividades - Mecanismo de Carteira}
+		\label{fig:damc}
 	\end{figure}
