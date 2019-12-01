@@ -20,31 +20,39 @@
 \contentsline {subsection}{\numberline {4.2.1}Criação do Repositório no Git}{12}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Instalação dos Frameworks}{12}{subsection.4.2.2}%
 \contentsline {subsection}{\numberline {4.2.3}Criação e configuração do Heroku}{13}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Home.html + app.js}{13}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.4}Home.html + app.js}{14}{subsection.4.2.4}%
 \contentsline {subsection}{\numberline {4.2.5}Engenharia de Software}{14}{subsection.4.2.5}%
 \contentsline {section}{\numberline {4.3}2$^{\circ }$ Sprint}{15}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Descrevendo as features com Cucumber}{15}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Testando cadastro/login com PostgreSQL do Heroku}{15}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.2}Testando cadastro/login com PostgreSQL do Heroku}{16}{subsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.3.3}Estabelecendo Sessão}{16}{subsection.4.3.3}%
 \contentsline {subsection}{\numberline {4.3.4}Visualizando o inventário Steam do usário}{16}{subsection.4.3.4}%
 \contentsline {section}{\numberline {4.4}3$^{\circ }$ Sprint}{17}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Personalização via Cookie}{17}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Template Engine Handlebars}{17}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}4$^{\circ }$ Sprint}{17}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Mecânica de Depósito e Saque de Skins}{17}{subsection.4.5.1}%
+\contentsline {section}{\numberline {4.5}4$^{\circ }$ Sprint}{18}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Mecânica de Depósito e Saque de Skins}{18}{subsection.4.5.1}%
 \contentsline {subsection}{\numberline {4.5.2}Mecânica de Investimento de Skins}{18}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}5$^{\circ }$ Sprint}{18}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Mecânica de Carteira}{18}{subsection.4.6.1}%
+\contentsline {section}{\numberline {4.6}5$^{\circ }$ Sprint}{19}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Mecânica de Carteira}{19}{subsection.4.6.1}%
 \contentsline {subsection}{\numberline {4.6.2}Mecânica de Compra de Skins e Histórico de Vendas}{19}{subsection.4.6.2}%
 \contentsline {subsection}{\numberline {4.6.3}Testes}{19}{subsection.4.6.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {Diagramas}}{20}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Banco de Dados}{20}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Diagramas de Atividade}{22}{section.5.2}%
+\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {Diagramas}}{21}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Banco de Dados}{21}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Diagramas de Atividade}{23}{section.5.2}%
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{Conclusão}{25}{chapter*.6}%
+\contentsline {chapter}{Conclusão}{26}{chapter*.6}%
 \vspace {\cftbeforechapterskip }
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{Referências}{26}{chapter*.9}%
+\contentsline {chapter}{\MakeTextUppercase {Refer\^encias}}{27}{section*.10}%
 \vspace {\cftbeforechapterskip }
+\renewcommand *{\cftappendixname }{AP\^ENDICE \space }
+\setlength {\cftpartindent }{\cftlastnumwidth } \setlength {\cftpartnumwidth }{2em}
+\cftinsert {A}
+\contentsline {part}{\uppercase {Ap\^endices}}{28}{section*.12}%
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
+\cftinsert {A}
+\contentsline {appendix}{\chapternumberline {A}\MakeTextUppercase {Cenários das Users Stories}}{29}{appendix.A}%

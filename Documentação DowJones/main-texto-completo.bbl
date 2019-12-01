@@ -1,0 +1,60 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9.7 }
+
+\bibitem[E-ARENA 2018]{materiaEArena}
+\abntrefinfo{E-ARENA}{E-ARENA}{2018}
+{E-ARENA. \emph{ITENS COSMÉTICOS MOVIMENTAM CULTURA E ECONOMIA DOS JOGOS}.
+  2018.
+Dispon{\'\i}vel em:
+  \url{https://web.archive.org/web/20190111131423/http://e-arena.com.br/itens-cosmeticos-movimentam-cultura-e-economia-dos-jogos/}.
+  Acesso em: 14 Out. 2019.}
+
+\bibitem[ENEMY 2019]{materiaTheEnemy}
+\abntrefinfo{ENEMY}{ENEMY}{2019}
+{ENEMY, T. \emph{MERCADO DE SKINS DE CS:GO PODE MOVIMENTAR ATÉ 10 BILHÕES DE
+  DÓLARES POR ANO}. 2019.
+Dispon{\'\i}vel em:
+  \url{https://web.archive.org/web/20190721085256/http://www.theenemy.com.br/esports/csgo-mercado-skins-10-bilhoes-valores-precos}.
+  Acesso em: 14 Out. 2019.}
+
+\bibitem[HEROKU-POSTGRES 2019]{herokuPostgreSQLDocumentation}
+\abntrefinfo{HEROKU-POSTGRES}{HEROKU-POSTGRES}{2019}
+{HEROKU-POSTGRES. \emph{Heroku Postgres}. 2019.
+Dispon{\'\i}vel em:
+  \url{https://web.archive.org/web/20190615202544/https://devcenter.heroku.com/articles/heroku-postgresql}.
+  Acesso em: 04 Out. 2019.}
+
+\bibitem[NEWZOO 2019]{artigosNewZoo}
+\abntrefinfo{NEWZOO}{NEWZOO}{2019}
+{NEWZOO. \emph{NEWZOO ARTICLES}. 2019.
+Dispon{\'\i}vel em:
+  \url{https://web.archive.org/web/20191004203801/https://newzoo.com/insights/articles/}.
+  Acesso em: 15 Out. 2019.}
+
+\bibitem[PUC-PR 2018]{artigoPUC}
+\abntrefinfo{PUC-PR}{PUC-PR}{2018}
+{PUC-PR. \emph{Mercado De Jogos Digitais Cresce No Brasil E No Mundo}. 2018.
+Dispon{\'\i}vel em:
+  \url{https://web.archive.org/web/20181009121243/https://g1.globo.com/pr/parana/especial-publicitario/puc-pr/profissionais-do-amanha/noticia/2018/10/08/mercado-de-jogos-digitais-cresce-no-brasil-e-no-mundo.ghtml}.
+  Acesso em: 15 Out. 2019.}
+
+\bibitem[Steam-Inventory-API 2017]{steam-apiDocumentation}
+\abntrefinfo{Steam-Inventory-API}{STEAM-INVENTORY-API}{2017}
+{STEAM-INVENTORY-API. \emph{Steam inventory API}. 2017.
+Dispon{\'\i}vel em:
+  \url{https://web.archive.org/save/https://www.npmjs.com/package/steam-inventory-api}.
+  Acesso em: 02 Out. 2019.}
+
+\bibitem[TEMPO 2019]{artigoOTempo}
+\abntrefinfo{TEMPO}{TEMPO}{2019}
+{TEMPO, O. \emph{SETOR DE GAMES CRESCE ACIMA DA MÉDIA NO PAÍS, MAS É O 13º
+  DO MUNDO}. 2019.
+Dispon{\'\i}vel em:
+  \url{https://www.otempo.com.br/economia/subscription-required-7.5927739}.
+  Acesso em: 15 Out. 2019.}
+
+\end{thebibliography}

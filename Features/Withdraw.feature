@@ -20,3 +20,6 @@ Feature: Saque das Skins
         Then I should confirm the trade
         And I should be my skin back to Steam Account
         And I should not see my skin at 'DJ Skins Inventory page'
+
+
+        

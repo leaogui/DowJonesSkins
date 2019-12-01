@@ -3,31 +3,14 @@
 % ---
 \chapter*[Conclusão]{Conclusão}
 \addcontentsline{toc}{chapter}{Conclusão}
-Em suma, o projeto construído consiste em uma aplicação web para vendas de skins do jogo 
-Counter-Strike: Global Offensive.
+Em conclusão, a aplicação foi construída usando Node.js como back-end e HTML5 como front-end. As dificuldades encontradas nesta fase foram causadas por conta da falta de conhecimento em back-end e em Node.js, o que ocasionou a utilização do template engine Handlebars. Contudo, o aprendizado foi consideravelmente rápido, o que possibilitou a finalização das mecânicas principais prometidas ao início do projeto.
 
-Node.js foi utilizado para o desenvolvimento back-end,
-enquanto o HTML5 foi utilizado para o front-end. Como template-engine, o handlebars foi 
-utilizado, tornando a aplicação server-side.
+O GitHub foi utilizado como gerenciador de versão e não levantou grandes problemas ou mistérios. Em geral, a utilização foi feita de forma correta, versionando apenas os arquivos essenciais e excluindo outros, como o node\_modules. Porém, a documentação do projeto foi guardada no mesmo repositório que o código, o que não foi uma boa prática. Por mais que não estrague o repositório, o ideal seria utilizar um segundo repositório.
 
-Como metodologia de engenharia de software, os métodos ágeis foram aplicados, e o 
-desenvolvimento do sistema foi feito em cima de Users Stories separadas por sprints, 
-similarmente a metodologia XP.  
+Como ferramenta de deploy, o Heroku foi utilizado e nenhum problema foi encontrado em sua utilização, pois sua documentação foi de bom tamanho para um aprendizado rápido e boa utilização da ferramenta. O addon do PostgreSQL do Heroku foi utilizado e tal demandou uma pesquisa mais aprofundada, pois a documentação por si só não se identificou suficiente para sua utilização de maneira limpa. Todavia, após poucas provas de conceito e algumas pesquisas pequenas, sua utilização foi efetiva.
 
-Para a implementação do projeto, duas APIs da Steam foram utilizadas, sendo uma para 
-autenticação, e outra para resgate de inventário. O GitHub foi utilizado para como 
-gerenciador de versão, enquanto o Heroku foi utilizado como ferramenta de deploy.
+O desenvolvimento do projeto foi feito em sprints, o que foi totalmente novo para a equipe, que se adaptou bem à metodologia de desenvolvimento e conseguiu realizar o projeto a tempo, dividindo razoavelmente bem as tarefas. 
 
-Além disso, foi utilizado o PostgreSQL do Heroku como banco de dados da aplicação, salvando 
-assim as skin, as contas dos usuários, seus inventários e seus históricos de venda.
-
-Como testes, testes unitários e de integração foram implementados em grande quantidade, 
-enquanto um único teste end-to-end automatizado foi desenvolvido. A ferramenta de análise 
-estática ‘jshint’ foi utilizada para neutralização de code smells.
-
-Ao final de todo o desenvolvimento, a aplicação construída foi um sucesso, abraçando 
-mecânicas de depósito, retirada, compra, valorização e investimento de skins, além de ter um 
-mecanismo de carteira. Todos esses mecanismos feitos de forma simulada, não realizando a 
-real troca ou compra de skins, assim como deposito e saque de dinheiro da carteira.
+Quanto as tarefas, é importante ressaltar que suas escolhas, definições e mensurações foram bem discutidas, o que foi bem crucial para a implementação do projeto, pois culminaram na simplificação das Users Stories, exclusão de algumas e troca de ideias em relação a que tecnologias seriam utilizadas para criação do sistema.
 
 % ---

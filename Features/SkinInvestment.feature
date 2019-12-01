@@ -1,7 +1,7 @@
-Feature: Depósito de Skins
+Feature: Investimento de Skins
     In order to value/devalue my CSGO Skins 
     As an Logged User
-    I should be able to invest int my deposited skins
+    I should be able to invest in my deposited skins
 
     Background:
         Given I am an User registered in the Site using my Steam Account
