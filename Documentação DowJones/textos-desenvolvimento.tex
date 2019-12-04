@@ -3,10 +3,10 @@
 %---------------------------------------------------------------------------------------
 
 \chapter[Desenvolvimento do Projeto]{Desenvolvimento do Projeto}
-Neste capítulo, o desenvolvimento projeto será explicitado e comentado. Por conta a metodologia de desenvolvimento ágil escolhida, cada Sprint possui uma seção no documento, contendo o que foi realizado nela.
+Neste capítulo, o desenvolvimento projeto será explicitado e comentado. Por conta da metodologia de desenvolvimento ágil escolhida, cada Sprint possui uma seção no documento, contendo o que foi realizado nela.
 
 \section{User Stories}
-Como descrição das necessidades dos usuários desta aplicação, servindo como casos de uso + requisitos funcionais, as seguintes User Storie foram discutidas e, ao longo do projeto, implementadas:
+Como descrição das necessidades dos usuários desta aplicação, servindo como casos de uso + requisitos funcionais, as seguintes Users Stories foram discutidas e, ao longo do projeto, implementadas:
 
 \begin{itemize}
 \item Eu, enquanto usuário, devo conseguir cadastrar/logar via Steam Account para usufruir das 
@@ -18,13 +18,13 @@ inventário do Site, a fim de investir nelas no site.
 \item Eu, enquanto usuário, devo conseguir depositar apenas as Skins permitidas pelo site, já que o 
 site limita as Skins aceitas.
 
-\item Eu, enquanto usuário, devo conseguir colocar na bolsa uma Skins do meu inventário do site, para 
-que ela possa valorizar/desvalorizar com o tempo.
+\item Eu, enquanto usuário, devo conseguir colocar na bolsa Skins do meu inventário do site, para 
+que elas possam valorizar/desvalorizar com o tempo.
 
 \item Eu, enquanto usuário, não posso ``sacar'' as Skins em investimento no site, apenas as que estão no 
 meu inventário.
 
-\item Eu, enquanto usuário, só poderei retornar uma Skins do investimento para o inventário após 1 mês 
+\item Eu, enquanto usuário, só poderei retornar uma Skin do investimento para o inventário após 1 mês 
 de investimento.
 
 \item Eu, enquanto usuário, devo conseguir ``sacar'' as Skins que estão no inventário do site para o meu 
@@ -39,14 +39,14 @@ que eu possa saber a hora de comprar e vender.
 \item Eu, enquanto usuário, devo conseguir comprar Skins investidas no site com dinheiro.
 \end{itemize}
 
-Para maiores detalhes, alguns cenários de User Story foram levantados e exibidas no \autoref{cenarios}.
+Para maiores detalhes, alguns cenários de User Story foram levantados e exibidos no \autoref{cenarios}.
 
 \section{1$^{\circ}$ Sprint}
 O primeiro sprint consistiu na preparação do repositório do projeto, com a instalação dos seguintes
-FrameWorks: Code Climate, Cucumber, Jest, Travis CI. Além da configuração dessas ferramentas,
+Frameworks: Code Climate, Cucumber, Jest, Travis CI. Além da configuração dessas ferramentas,
 foi desenvolvido o primeiro esboço do projeto do projeto para inserção no Heroku e teste da configuração.
 Neste esboço, foi criado a Home do site e o arquivo node.js principal. Para a parte de ES4A4,
-foi criado o projeto no PivotalTracker, a fim de inserirmos as User Stories.
+foi criado o projeto no Pivotal Tracker, a fim de inserir e organizar as User Stories.
 
 \subsection{Criação do Repositório no Git}
 O primeiro passo tomado pela equipe foi a criação do repositório no Git. Para isso, o integrantes
@@ -69,7 +69,7 @@ informações de todas as biliotecas e dependencias instaladas no projeto.
 Com esses três arquivos criados, o Jest foi instalado, a partir do comando ``npm install jest'', e o Cucumber, a partir
 do comando ``npm install cucumber''. Ambos os frameworks são utilizados para testes.
 
-Após a instalação dos dois frameworks para o node.js, os dois frameworks foram instalados para o próprio repositório do GitHub.
+Após a instalação dos dois frameworks para o node.js, outros dois frameworks foram instalados para o próprio repositório do GitHub.
 O primeiro foi o CodeClimate. Para isso, o dono do repositório instalou a extensão CodeClimate no navegador,
 e posteriormente entrou no git do projeto. Dentro do GitHub do projeto, uma opção apareceu para adicionar
 o projeto ao CodeClimate. Após clicar na opção, o repositório foi lido e adicionado ao CodeClimate, 
@@ -90,14 +90,14 @@ para que ele seja sincronizado com o ``push'' para o repositório no GitHub.\\
 
 \subsection{Home.html + app.js}
 Para criar o esboço da Home do projeto, o HTML5 foi utilizado. Para estilização, o Bulma foi explorando,
-que consiste num FrameWork de CSS. Cada arquivo foi separado em pastas baseadas em suas extensões. 
+que consiste num Framework de CSS. Cada arquivo foi separado em pastas baseadas em suas extensões. 
 Diante disso, uma pasta HTMl, uma CSS e uma JS foram criadas. Na pasta CSS, o .min.css do Bulma foi salvo, para que fosse possível utilizá-lo. A \autoref{fig:home} mostra o estado final da construção da primeira ``Home'' da aplicação.
 
 Com a Home criada, o próximo passo foi o primeiro contato com o login via Steam. Para isso, a API
-da Steam para Node.JS foi utilizada. No arquivos app.js, que consiste no arquivo ``main'', todas as rotas foram criadas
+da Steam para Node.js foi utilizada. No arquivo ``app.js'', que consiste no arquivo ``main'', todas as rotas foram criadas
 e o framework ``express'' foi utilizado para instanciação do servidor web. Neste arquivo, as rotas da API Steam foram implementadas, configurando
 o middleware, informando a API Key e domínio. Por conta da execução ser tanto localmente quanto no Heroku, 
-vários arquivos JS com functions fororam modularizados para realizar essa troca de domínio, porta e API Key, já que tais keys mudam para cada domínio (local e Heroku). 
+vários arquivos JS com functions foram modularizados para realizar essa troca de domínio, porta e API Key, já que tais keys mudam para cada domínio (local e Heroku). 
 
 Para essas funções foram criadas testes unitários utilizando o Jest. Esses testes estão na subpasta ``tests'' 
 dentro da pasta ``JS''.\\
@@ -112,10 +112,10 @@ dentro da pasta ``JS''.\\
 \subsection{Engenharia de Software}
 No Pivotal Tracker criado pelo professor Daniel, as primeiras User Stories foram inseridas. Essas Stories consistem 
 nas principais funcionalidades de usuários identificadas pelo grupo e divididas até então. Após a inserção, 
-Uma pontuação foi atribuída para cada uma, a partir de um debate, onde o integrante que deu a menor nota defendia seu argumento 
+uma pontuação foi atribuída para cada uma, a partir de um debate, onde o integrante que deu a menor nota defendia seu argumento 
 junto ao integrante de deu a maior nota. O melhor argumento decide a nota.
 
-Após isso, a prioridade e dependencias de cada User Story foi organizada, além de lançar algumas Users Stories no IceBox, fechando a primeira organização do Pivotal Tracker, como pode ser vista na \autoref{fig:pivotal}.\\
+Após isso, a prioridade e dependencias de cada User Story foi organizada, além de lançar algumas User Stories no IceBox, fechando a primeira organização do Pivotal Tracker, como pode ser vista na \autoref{fig:pivotal}.\\
 
 \begin{figure}[!htb]
 	\centering
@@ -125,24 +125,23 @@ Após isso, a prioridade e dependencias de cada User Story foi organizada, além
 \end{figure}
 
 \section{2$^{\circ}$ Sprint}
-O segundo sprint consistiu na descrição dos User Stories usando Cucumber, na implementação do sistema de cadastro/login usando o PostGreSQL do Heroku e a Steam, implementando sessões de login na aplicação e utilizando a steam-inventory-api para visualizar o inventário do usuário logado.
+O segundo sprint consistiu na descrição dos User Stories usando Cucumber, na implementação do sistema de cadastro/login usando o PostgreSQL do Heroku e a Steam, implementando sessões de login na aplicação e utilizando a steam-inventory-api para visualizar o inventário do usuário logado.
 
 \subsection{Descrevendo as features com Cucumber}
 Com as User Stories definidas, o passo seguinte foi esboçar todas as features utilizando o ideal do BDD 
-e utilizando o Cucumber para isso. Com isso, os possíveis cenários de todas as User Stories foram descritos até então, seguindo como base o projeto exemplo mostrado pelo professor Daniel, 
-mais a própria documentação do Cucumber.
+e utilizando o Cucumber para isso. Com isso, os possíveis cenários de todas as User Stories foram descritos até então, seguindo como base o projeto exemplo mostrado pelo professor Daniel mais a própria documentação do Cucumber.
 
-Como Dito anteriormente, para isso a sintaxe do Cucumber foi utilizada, e cada feature foi separada em um arquivo diferente, 
+Como dito anteriormente, para isso a sintaxe do Cucumber foi utilizada, e cada feature foi separada em um arquivo diferente, 
 salvas em uma pasta separada, chamada ``Features''. 
-Como sintaxe, cada User Storie foi salva como Feature, com suas descrições, Backgrounds, e assim Cenários.
+Como sintaxe, cada User Story foi salva como Feature, com suas descrições, Backgrounds, e assim Cenários.
 
 \subsection{Testando cadastro/login com PostgreSQL do Heroku}
-Para começar o sistema de cadastro/login, o add-ons do PostGre foi adicionado ao Heroku via Heroku CLI. Para isso, 
+Para começar o sistema de cadastro/login, o add-ons do Postgre foi adicionado ao Heroku via Heroku CLI. Para isso, 
 o comando ``npm install pg'' foi utilizado para instalar o Postgres do projeto. Após isso, o add-on do Postgre foi instalado no
 Heroku via CMD, com comando ``heroku addons:create heroku-postgresql:hobby-dev''. Após isso, os passos 
 que estão na documentação \citeonline{herokuPostgreSQLDocumentation} foram seguidos.
 
-Após isso, as tabelas foram criadas via CMD, usando comando ``heroku psql'' e adicionando todas as linhas de comando sql.
+Após isso, as tabelas foram criadas via CMD, usando comando ``heroku psql'' e adicionando linhas de comando SQL.
 Tendo a conexão estável e as tabelas criadas, uma classe chamada ``UserCRUD'' foi desenvolvida, e nela o JSON 
 enviado pela Steam após conexão foi utilizado para salvar um usuário novo no banco de dados.
 
@@ -154,12 +153,12 @@ Tendo isso feito, a primeira parte do sistema de cadastro/login foi finalizada.
 A fim de estabelecer o sistema de login, a utilização de sessão para bloquear o acesso de usuário a 
 determinadas páginas do site foi a solução mais viável. Para isso, a constante Session da biblioteca ``Express'' foi utilizada.
 
-O comando app.use() foi utilizado para usar o Session. Neste etapa, um id paraa sessão foi inserido dentro do 
+O comando app.use() foi utilizado para usar o Session. Neste etapa, um id para a sessão foi inserido dentro do 
 parâmetro de inicialização ``secret'', e false foi posto nos outros dois itens de inicialização, saveUninitialized e resave, que, 
 após pesquisar, foi decidido que não fariam sentido algum.
 
 Após isso, dentro da página ``/verify'' foi colocada a criação da sessão de acordo com o login do usuário na Steam. 
-Com o usuário autenticado via Steam, o comando ``req.session.user'' foi itilizado e o JSON fornecido pela Steam 
+Com o usuário autenticado via Steam, o comando ``req.session.user'' foi utilizado e o JSON fornecido pela Steam 
 foi atribuído à essa constante.
 
 Com isso, uma sessão é criada para cada usuário logado, e após isso, para bloquear o acesso à páginas sem que o user 
@@ -167,21 +166,21 @@ esteja logado, um ``IF'' foi inserido em cada get do servidor (ignorando a /inde
 ``!req.session.user'' foi inserido, mostrando que caso não exista ression, o usuário deveria ser redirecionado para a 
 tela de login da Steam, finalizando assim o ideal de sessão do site. 
 
-\subsection{Visualizando o inventário Steam do usário}
+\subsection{Visualizando o inventário Steam do usuário}
 Para obter acesso ao inventário Steam do usário logado, a biblioteca \citeonline{steam-apiDocumentation} foi utilizada. 
-O serviço da API é inicializado quando o servidor sobe. Após isso, ao se loga na Steam, o usuário é redirecionado para o ``/verify'' onde, 
+O serviço da API é inicializado quando o servidor sobe. Após isso, ao se logar na Steam, o usuário é redirecionado para o ``/verify'' onde, 
 além de ter a sessão instanciada, os itens de seu inventário são visualizados.
 
 Para isso, a steamId do usuário de dentro do JSON fornecido pela Steam foi recuperada e inserida como um dos diversos parâmetros da API de 
 inventário. Constantes foram utilizadas para facilitar o preenchimentos dos outros parâmetros de inicialização, seguindo como base o 
 exemplo de uso da API fornecido no site fonte.
 
-Com isso, ao logar no Steam, o sistema consegue capturar todos os itens trocáveis do inventário do usário, 
+Com isso, ao logar no Steam, o sistema consegue capturar todos os itens trocáveis do inventário do usuário, 
 além de filtrar para o jogo ``CSGO''.
 
 
 \section{3$^{\circ}$ Sprint}
-O terceiro sprint consistiu nas primeiras personalizações do site, via cookie, e na migraçã do front do projeto para Handlebars.
+O terceiro sprint consistiu nas primeiras personalizações do site, via cookie, e na migração do front do projeto para Handlebars.
 
 \subsection{Personalização via Cookie}
 A fim personalizar a tela do usuário logado, cookies foram utilizados para 
@@ -199,7 +198,7 @@ em manipulação do banco, tornou-se necessária a utilização de um Template E
 inteiramente back-end. 
 
 Diante disso, o ‘Handlebars’ foi instalado no sistema e marcado como template engine. Após isso, todos 
-os HTMls desenvolvidos até então foram trocados para Handlebars, e as devidas alterações no back-end 
+os HTMLs desenvolvidos até então foram trocados para Handlebars, e as devidas alterações no back-end 
 foram realizadas.
 
 O HBS foi a escolha por conta de sua natureza totalmente virada para o Node.js, o qual foi utilizado 
@@ -230,7 +229,7 @@ de dados, possibilitando assim o mecanismo de deposito e saque.
 Devido a burocracias com a Steam, não foi possível criar uma conta para realizar as trocas reais 
 de skins. Com isso, ao depositar uma skin, tal skin não some do inventário real do usuário, 
 apenas é mapeado para dentro do inventário do DJS. A mesma coisa para o saque, em que a 
-skin é realmente enviada para a Steam, mas sim apenas retirada do inventário do DJS, 
+skin não é realmente enviada para a Steam, mas sim apenas retirada do inventário do DJS, 
 simulando tal troca.
 
 \subsection{Mecânica de Investimento de Skins}
@@ -249,16 +248,16 @@ O quinto sprint foi o último antes da entrega da documentação e apresentaçã
 
 \subsection{Mecânica de Carteira}
 Após a implementação do deposito, saque e investimento de skins, a mecânica de carteira foi 
-desenvolvida para possibilitar a compra de skins. Para isso, foi criado uma sessão ‘Carteira’, e 
-uma coluna ‘saldo’ na tabela ‘usuario’ do Postgresql. 
+desenvolvida para possibilitar a compra de skins. Para isso, foi criado uma seção ‘Carteira’, e 
+uma coluna ‘saldo’ na tabela ‘usuario’ do PostgreSQL. 
 
-Ao clicar em ‘Depositar’ na sessão de ‘Carteira’, automaticamente R\$15 creditados em seu ‘saldo’, 
+Ao clicar em ‘Depositar’ na seção de ‘Carteira’, automaticamente R\$15 creditados em seu ‘saldo’, 
 realizando um UPDATE no banco de dados. Ao informar uma quantia a sacar e clicar em ‘Retirar’, tal 
 quantia é validada com o saldo. Se o saldo for maior ou igual a quantia, tal valor é debitado do 
 saldo, realizando outro UPDATE no banco de dados.
 
 \subsection{Mecânica de Compra de Skins e Histórico de Vendas}
-Para o mecanismo de compra, foi criado a sessão ‘DayTrade’, em que o usuário 
+Para o mecanismo de compra, foi criado a seção ‘DayTrade’, em que o usuário 
 acessará para ver todas as skins investidas no site e seu determinado preço, além 
 de ver seus próprios investimentos, possibilitando o cancelamento de algum deles, 
 caso tenham mais de 31 dias.
@@ -283,8 +282,7 @@ evitando qualquer má manipulação de banco de dados e interferência no mecani
 skins do site.
 
 Além desses testes, uma ferramenta de análise estática foi utilizada no projeto. Tal ferramenta 
-foi o ‘jshint’, e serviu como “cleaner” de “code smells”. A análise estática de 100\% ao final 
-das refatorações requisitadas pela ferramenta.
+foi o ‘jshint’, e serviu como “cleaner” de “code smells”. A análise estática de 100\% foi conquistada após as refatorações requisitadas pela ferramenta.
 
 %\section{Tipo de Pesquisa}
 %\lipsum[3-5]
