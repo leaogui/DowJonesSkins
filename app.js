@@ -323,8 +323,10 @@ app.get('/logout', steam.enforceLogin('/'), function (req, res) {
 });
 
 // startando aplicação no gateway selecionado
-app.listen(PORT, () => {
+var server = app.listen(PORT, () => {
     console.log("Rodando");
     console.log('Porta: ' + PORT);
     console.log('API Key: ' + key);
 });
+
+module.exports = { server };
