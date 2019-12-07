@@ -1,7 +1,7 @@
 /* jshint esversion:8 */
 const { After, AfterAll } = require('cucumber');
 const scope = require('./support/scope');
-const app = require("../../../app");
+const app = require("../app");
 
 After(async () => {
     if(scope.browser && scope.context.currentPage){

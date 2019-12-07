@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "cucumber": "./node_modules/.bin/cucumber-js",
     "test": "jest",
     "static": "jshint app.js ./JS",
     "start": "node app.js"
@@ -25,19 +26,19 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.16.2",
-    "jest": "^24.9.0",
-    "jshint": "^2.10.3",
     "mysql2": "^1.7.0",
     "node-static": "^0.7.11",
     "openid": "^2.0.6",
     "pg": "^7.12.1",
-    "puppeteer": "^2.0.0",
     "request-promise": "^4.2.4",
     "sequelize": "^5.18.2",
     "steam-inventory-api": "^2.0.10",
     "steam-login": "^0.1.7"
   },
   "devDependencies": {
-    "cucumber": "^5.1.0"
+    "cucumber": "^5.1.0",
+    "jest": "^24.9.0",
+    "puppeteer": "^2.0.0",
+    "jshint": "^2.10.3"
   }
 }
